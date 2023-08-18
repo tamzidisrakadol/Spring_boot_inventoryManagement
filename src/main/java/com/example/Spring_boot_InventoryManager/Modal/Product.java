@@ -5,28 +5,30 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 
-
+//change quantity to int , add price
 
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String name;
     String description;
-    String quantity;
+    int quantity;
     String expireDate;
+    String imgUrl;
+    String batchNumber;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String quantity, String expireDate) {
+    public Product(int id, String name, String description, int quantity, String expireDate, String imgUrl, String batchNumber) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.expireDate = expireDate;
+        this.imgUrl = imgUrl;
+        this.batchNumber = batchNumber;
     }
-
 
     public int getId() {
         return id;
@@ -52,11 +54,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -68,6 +70,21 @@ public class Product {
         this.expireDate = expireDate;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getBatchNumber() {
+        return batchNumber;
+    }
+
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
+    }
 
     @Override
     public String toString() {
@@ -75,8 +92,10 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", quantity='" + quantity + '\'' +
+                ", quantity=" + quantity +
                 ", expireDate='" + expireDate + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", batchNumber='" + batchNumber + '\'' +
                 '}';
     }
 }

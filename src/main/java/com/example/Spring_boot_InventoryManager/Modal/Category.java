@@ -11,7 +11,6 @@ import java.util.List;
 @Document(collection = "Products")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     int categoryId;
     String categoryName;
     List<Product> productList;

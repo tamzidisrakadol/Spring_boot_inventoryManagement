@@ -16,4 +16,9 @@ public class ProductService {
         productRepo.save(category);
         return "Success";
     }
+
+    public Category updateProduct(@RequestBody Category category,int id){
+        productRepo.save(category);
+        return category;
+    }
 }
