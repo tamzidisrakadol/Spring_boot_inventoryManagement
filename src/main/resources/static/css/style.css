@@ -1,0 +1,157 @@
+body{
+    background:#e2e2e2;
+}
+
+.bg-primary{
+    background: #1589FF;
+}
+
+.banner{
+    width: 100%;
+    height: 93vh;
+    background: #87CEFA;
+    background-size: cover;
+    color: white;
+}
+
+.my-card{
+    padding: 50px;
+    background: #FFFFFF;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+
+}
+
+.main {
+    padding: 0px 10px;
+}
+
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%;
+    }
+
+    .login-form{
+        margin-top: 50%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+#white-text {
+    color: white;
+}
+
+@media only screen and (max-width:600px){
+.sidebar{
+    display: none;
+    width: 80%!important;
+    background: white;
+    height: 100%;
+    position: fixed;
+    padding-top: 20px;
+}
+
+.content{
+    margin-left: 0%!important;
+}
+}
+
+
+
+.sidebar{
+    width: 18%;
+    background: white;
+    height: 100%;
+    position: fixed;
+    padding-top: 50px;
+}
+
+.sidebar a{
+    display: block;
+    width: 100%;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: gray;
+}
+
+.sidebar a:hover{
+    background: #e2e2e2;
+}
+
+.sidebar .divider{
+    height: .8px;
+    width: 100%;
+    background: gray;
+    margin-top: 40px;
+}
+
+.sidebar .cross-btn{
+    position: absolute;
+    top: 0;
+    right: 35px;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+
+
+
+.content{
+    margin-left: 20%;
+    padding-left: 15px;
+}
+
+hr.solid {
+    border-top: 3px solid #bbb;
+}
+
+.search-container{
+    position: relative;
+}
+
+.search-result{
+    position: absolute;
+    background: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    display: none;
+
+}
