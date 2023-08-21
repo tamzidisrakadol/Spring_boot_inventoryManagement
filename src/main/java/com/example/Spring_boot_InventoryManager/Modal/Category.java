@@ -4,15 +4,19 @@ package com.example.Spring_boot_InventoryManager.Modal;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "Products")
+@Document(collection = "Category")
 public class Category {
     @Id
     int categoryId;
+
     String categoryName;
+
+    @DBRef
     List<Product> productList;
 
     public Category() {

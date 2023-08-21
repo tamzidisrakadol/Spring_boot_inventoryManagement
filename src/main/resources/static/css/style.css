@@ -52,19 +52,12 @@ body {
 }
 
 .container1 {
-    background: #5E7D7E;
-    height: 600px;
-    width: 50%;
-    float: left;
+    background: #E0FFFF;
+    height: 750px;
+    width: 60%;
+    margin-left: 200px;
 }
 
-.container2 {
-    background-color: lightcoral;
-    float: right;
-    height: 600px;
-    width: 50%;
-}
 
-.addproductmain {
-    background: yellow;
-}
+
+

@@ -2,23 +2,23 @@ package com.example.Spring_boot_InventoryManager.Service;
 
 
 import com.example.Spring_boot_InventoryManager.Modal.Category;
+import com.example.Spring_boot_InventoryManager.Modal.Product;
+import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
 import com.example.Spring_boot_InventoryManager.Repository.ProductRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
+
     @Autowired
-    ProductRepo productRepo;
+    CategoryRepo categoryRepo;
 
-    public String saveProduct(@RequestBody Category category){
-        productRepo.save(category);
-        return "Success";
-    }
 
-    public Category updateProduct(@RequestBody Category category,int id){
-        productRepo.save(category);
-        return category;
-    }
 }
