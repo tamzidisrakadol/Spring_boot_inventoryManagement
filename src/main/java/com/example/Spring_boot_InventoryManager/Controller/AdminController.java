@@ -17,6 +17,24 @@ public class AdminController {
     ProductService productService;
 
 
+    @GetMapping("/admin/showAll")
+    public List<Category> showProduct(){
+        return productService.showCategory();
+    }
+
+
+    @PutMapping("/admin/update/{id}")
+    public String updateCategory(@PathVariable int id, @RequestBody Product product){
+        Category category = productService.findByCategory(id);
+        if (category!=null){
+            category.getProductList().add(product);
+            productService.saveProduct(product);
+            return productService.saveCategory(category);
+        }else{
+            return null;
+        }
+
+    }
 
 
 //    @GetMapping("/admin/addProduct")
