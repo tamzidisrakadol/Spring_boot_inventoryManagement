@@ -20,5 +20,25 @@ public class ProductService {
     @Autowired
     CategoryRepo categoryRepo;
 
+    @Autowired
+    ProductRepo productRepo;
 
+    public String saveProduct(Product product) {
+        productRepo.save(product);
+        return "Success";
+    }
+
+    public String saveCategory(Category category) {
+        categoryRepo.save(category);
+        return "success";
+    }
+
+    public List<Category> showCategory() {
+        return categoryRepo.findAll();
+    }
+
+    public Category findByCategory(int id){
+        Optional<Category> getCategory = categoryRepo.findById(id);
+        return getCategory.orElse(null);
+    }
 }
