@@ -1,12 +1,10 @@
 package com.example.Spring_boot_InventoryManager.Modal;
 
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "Category")
@@ -17,9 +15,10 @@ public class Category {
     String categoryName;
 
     @DBRef
-    List<Product> productList;
+    List<Product> productList = new ArrayList<>();
 
     public Category() {
+
     }
 
     public Category(int categoryId, String categoryName, List<Product> productList) {
@@ -51,5 +50,14 @@ public class Category {
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
+                ", productList=" + productList +
+                '}';
     }
 }

@@ -44,8 +44,15 @@ public class SpringBootInventoryManagerApplication {
 		category1.setCategoryName("juice");
 		category1.setProductList(productList);
 
-		productService.saveProduct(product3);
-		productService.saveCategory(category1);
+//		productService.saveProduct(product3);
+//		productService.saveCategory(category1);
+
+		Category category2 = new Category();
+		category2.setCategoryId(458);
+		category2.setCategoryName("Vegetable");
+
+		productService.saveCategory(category2);
+
 
 	}
 
