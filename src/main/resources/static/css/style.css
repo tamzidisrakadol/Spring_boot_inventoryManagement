@@ -49,13 +49,17 @@ body {
 .main {
     margin-left: 200px;
     padding: 30px;
+    background: #E5E4E2;
 }
 
-.container1 {
-    background: #E0FFFF;
-    height: 750px;
-    width: 60%;
-    margin-left: 200px;
+
+.rectangle-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    min-height: 700px; /* Adjust the height as needed */
+    border-radius: 10px;
+    background-color: white;
 }
 
 

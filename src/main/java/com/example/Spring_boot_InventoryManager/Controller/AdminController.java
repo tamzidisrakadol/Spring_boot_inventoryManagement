@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class AdminController {
 
     @Autowired
@@ -23,18 +23,28 @@ public class AdminController {
     }
 
 
-    @PutMapping("/admin/update/{id}")
-    public String updateCategory(@PathVariable int id, @RequestBody Product product){
-        Category category = productService.findByCategory(id);
-        if (category!=null){
-            category.getProductList().add(product);
-            productService.saveProduct(product);
-            return productService.saveCategory(category);
-        }else{
-            return null;
-        }
-
+    @GetMapping("admin/addProduct")
+    public String addProductui(){
+        return "admin/addProduct";
     }
+
+
+
+
+
+    //to update  the list 
+    // @PutMapping("/admin/update/{id}")
+    // public String updateCategory(@PathVariable int id, @RequestBody Product product){
+    //     Category category = productService.findByCategory(id);
+    //     if (category!=null){
+    //         category.getProductList().add(product);
+    //         productService.saveProduct(product);
+    //         return productService.saveCategory(category);
+    //     }else{
+    //         return null;
+    //     }
+
+    // }
 
 
 //    @GetMapping("/admin/addProduct")
