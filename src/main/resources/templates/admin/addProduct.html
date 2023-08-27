@@ -2,72 +2,102 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Document</title>
 </head>
+
 <body>
   <section>
-       <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="rectangle-container">
-                    <h2>Add Image</h2>
-                    <form action="/uploadImage" method="post" enctype="multipart/form-data">
-                      <div class="form-group">
-                          <label for="image">Upload Image:</label>
-                          <input type="file" class="form-control-file" id="image" name="image">
-                      </div>
-                      <button type="submit" class="btn btn-info">Upload Image</button>
-                  </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="rectangle-container">
-                    <h2>Add Product Info</h2>
-                    <form>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputEmail4">Email</label>
-                          <input type="email" class="form-control" id="inputEmail4">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputPassword4">Password</label>
-                          <input type="password" class="form-control" id="inputPassword4">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputAddress2">Address 2</label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputCity">City</label>
-                          <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="form-group col-md-4">
-                          <label for="inputState">State</label>
-                          <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                          <label for="inputZip">Zip</label>
-                          <input type="text" class="form-control" id="inputZip">
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary">Sign in</button>
-                    </form>
-                </div>
-            </div>
+    <div class="container-fluid">
+      <div class="row">
+
+
+
+        <div class="col-md-6">
+          <div class="rectangle-container">
+            <h2>Add Image</h2>
+            <hr class="solid">
+
+            <!--upload Image-->
+            <form action="/uploadImage" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="image">Upload Image:</label>
+                <input type="file" class="form-control-file" id="image" name="image">
+              </div>
+              <button type="submit" class="btn btn-info">Upload Image</button>
+
+              <div class="space-between-divs"></div>
+
+              <!--create Category-->
+              <form>
+              <div class="form-group">
+                <label for="inputAddress">Category</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Ex: Fruits,Vegetable,Drinks">
+              </div>
+              <div class="container text-center mt-3">
+                <button class="btn btn-outline-primary">Create Category</button>
+              </div>
+            </form>
+
+            </form>
+          </div>
         </div>
+
+
+
+
+        <div class="col-md-6">
+          <div class="rectangle-container">
+            <h2>Add Product Info</h2>
+            <hr class="solid">
+
+            <form>
+              <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" class="form-control" id="productName" placeholder="Ex: Tomato,Bringal">
+              </div>
+              <div class="form-group">
+                <label for="Quantity">Quantity</label>
+                <input type="number" class="form-control" id="Quantity" placeholder="Ex: 45">
+              </div>
+              <div class="form-group">
+                <label for="BatchNumber">Batch Number</label>
+                <input type="text" class="form-control" id="BatchNumber" placeholder="Ex: YUNN782JH">
+              </div>
+
+              <div class="form-group">
+                <label for="inputState">Select Category</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="ExpireDate">Expire Date</label>
+                <input type="date" class="form-control" id="ExpireDate" placeholder="Ex: DD/MM/YYYY">
+              </div>
+
+              <div class="form-group mt-3">
+                <textarea placeholder="Enter description"  id="description" class="form-control" rows="6"></textarea>
+            </div>
+
+           
+            <div class="container text-center">
+              <button type="submit" class="btn bg-primary text-white">
+                  Submit
+              </button>
+              <button type="reset" class="btn btn-warning">
+                  Reset
+              </button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -76,74 +106,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
 
-
-
-
-
-<!--<section>
-    <div class="containerMain">
-        <div class="row">
-            <div class="container1">
-                <div class="col-md-8 offset-md-2">
-                    <div class="my-card m-3">
-                        <form>
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="inputPassword4">Password</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="inputAddress">Address</label>
-                              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                            </div>
-                            <div class="form-group">
-                              <label for="inputAddress2">Address 2</label>
-                              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="inputCity">City</label>
-                                <input type="text" class="form-control" id="inputCity">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="inputState">State</label>
-                                <select id="inputState" class="form-control">
-                                  <option selected>Choose...</option>
-                                  <option>...</option>
-                                </select>
-                              </div>
-                              <div class="form-group col-md-2">
-                                <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                  Check me out
-                                </label>
-                              </div>
-                            </div>
-                            
-                            <div class="form-group">
-                              <label for="exampleFormControlFile1">Example file input</label>
-                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
-
-
-
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                          </form>
-                    </div>
-                </div>
-            </div>
-    </div>
-   </section>-->
