@@ -32,9 +32,9 @@ public class AdminController {
     @GetMapping("admin/addProduct")
     public String addProductui(Model model){
         Category category = new Category();
-       
+        List<Category> categoryList = productService.showCategory();
         model.addAttribute("category", category);
-       
+        model.addAttribute("categoryList", categoryList);
         return "admin/addProduct";
     }
 
