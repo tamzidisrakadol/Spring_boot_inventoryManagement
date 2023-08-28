@@ -30,18 +30,25 @@
               <button type="submit" class="btn btn-info">Upload Image</button>
 
               <div class="space-between-divs"></div>
+            </form>
 
-              <!--create Category-->
-              <form>
+
+            <h3>Create Category</h3>
+            <hr class="solid">
+
+            <!--create Category-->
+            <form th:action="@{/admin/createCategory}" method="POST" th:object="${category}">
+
               <div class="form-group">
                 <label for="inputAddress">Category</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Ex: Fruits,Vegetable,Drinks">
+
+                <input type="text" class="form-control" name="categoryName" th:value="${category.categoryName}"
+                  id="inputAddress" placeholder="Ex: Fruits,Vegetable,Drinks">
               </div>
+
               <div class="container text-center mt-3">
                 <button class="btn btn-outline-primary">Create Category</button>
               </div>
-            </form>
-
             </form>
           </div>
         </div>
@@ -82,18 +89,18 @@
               </div>
 
               <div class="form-group mt-3">
-                <textarea placeholder="Enter description"  id="description" class="form-control" rows="6"></textarea>
-            </div>
+                <textarea placeholder="Enter description" id="description" class="form-control" rows="6"></textarea>
+              </div>
 
-           
-            <div class="container text-center">
-              <button type="submit" class="btn bg-primary text-white">
+
+              <div class="container text-center">
+                <button type="submit" class="btn bg-primary text-white">
                   Submit
-              </button>
-              <button type="reset" class="btn btn-warning">
+                </button>
+                <button type="reset" class="btn btn-warning">
                   Reset
-              </button>
-            </div>
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -108,4 +115,3 @@
 </body>
 
 </html>
-
