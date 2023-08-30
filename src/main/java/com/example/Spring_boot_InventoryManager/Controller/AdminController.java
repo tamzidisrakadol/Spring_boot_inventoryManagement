@@ -31,6 +31,7 @@ public class AdminController {
 
     @GetMapping("admin/addProduct")
     public String addProductui(Model model){
+        model.addAttribute("title", "Add product");
         Category category = new Category();
         List<Category> categoryList = productService.showCategory();
         model.addAttribute("category", category);
