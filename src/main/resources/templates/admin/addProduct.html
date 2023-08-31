@@ -29,7 +29,7 @@
                 <i class="fa-solid fa-upload icon"></i>
                 <h3>Upload Image</h3>
                 <p>Image size must be less than 5MB</p>
-                
+
               </div>
               <div class="container text-center">
                 <button class="select-image btn btn-secondary">Select Image</button>
@@ -61,13 +61,13 @@
 
 
 
-
+        <!--add product to desire Category-->
         <div class="col-md-6">
           <div class="rectangle-container">
             <h2>Add Product Info</h2>
             <hr class="solid">
 
-            <form  method="POST">
+            <form id="updateProductForm" method="PUT" th:action="@{/admin/update/{categoryId}}">
               <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="text" class="form-control" id="productName" placeholder="Ex: Tomato,Bringal">
@@ -86,7 +86,8 @@
               <div class="form-group">
                 <label for="categoryList">Select Category</label>
                 <select id="categoryList" name="categoryId" class="form-control">
-                  <option  th:each="categories : ${categoryList}" th:value="${categories.categoryId}" th:text="${categories.categoryName}"></option>
+                  <option th:each="categories : ${categoryList}" th:value="${categories.categoryId}"
+                    th:text="${categories.categoryName}"></option>
                 </select>
               </div>
 
