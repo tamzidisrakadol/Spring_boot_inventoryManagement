@@ -67,25 +67,26 @@
             <h2>Add Product Info</h2>
             <hr class="solid">
 
-            <form id="updateProductForm" method="PUT" th:action="@{/admin/update/{categoryId}}">
+            <form id="updateProductForm" method="POST" th:action="@{/admin/update/}" th:object="${product}">
               <div class="form-group">
                 <label for="productName">Product Name</label>
-                <input type="text" class="form-control" id="productName" placeholder="Ex: Tomato,Bringal">
+                <input type="text" name="name" th:value="${product.name}" class="form-control" id="productName" placeholder="Ex: Tomato,Bringal">
               </div>
               <div class="form-group">
                 <label for="Quantity">Quantity</label>
-                <input type="number" class="form-control" id="Quantity" placeholder="Ex: 45">
+                <input type="number" name="quantity" th:value="${product.quantity}" class="form-control" id="Quantity" placeholder="Ex: 45">
               </div>
               <div class="form-group">
                 <label for="BatchNumber">Batch Number</label>
-                <input type="text" class="form-control" id="BatchNumber" placeholder="Ex: YUNN782JH">
+                <input type="text" name="batchNumber" th:value="${product.batchNumber}" class="form-control" id="BatchNumber" placeholder="Ex: YUNN782JH">
               </div>
 
 
               <!--select Category from list-->
               <div class="form-group">
                 <label for="categoryList">Select Category</label>
-                <select id="categoryList" name="categoryId" class="form-control">
+                <select id="categoryList" name="categoryId" class="form-control" onchange="updateFormAction()"  >
+                  <option selected>Choose Category</option>
                   <option th:each="categories : ${categoryList}" th:value="${categories.categoryId}"
                     th:text="${categories.categoryName}"></option>
                 </select>
@@ -93,11 +94,11 @@
 
               <div class="form-group">
                 <label for="ExpireDate">Expire Date</label>
-                <input type="date" class="form-control" id="ExpireDate" placeholder="Ex: DD/MM/YYYY">
+                <input type="date" name="expireDate" th:value="${product.quantity}" class="form-control" id="ExpireDate" placeholder="Ex: DD/MM/YYYY">
               </div>
 
               <div class="form-group mt-3">
-                <textarea placeholder="Enter description" id="description" class="form-control" rows="6"></textarea>
+                <textarea placeholder="Enter description" name="description" th:value="${product.description}" id="description" class="form-control" rows="6"></textarea>
               </div>
 
 

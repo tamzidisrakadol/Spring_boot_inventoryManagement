@@ -21,17 +21,15 @@ public class AdminController {
     @Autowired
     CategoryRepo categoryRepo;
 
-    @GetMapping("/admin/showAll")
-    public List<Category> showProduct() {
-        return productService.showCategory();
-    }
 
     @GetMapping("admin/addProduct")
     public String addProductui(Model model) {
         model.addAttribute("title", "Add product");
         Category category = new Category();
+        Product product = new Product();
         List<Category> categoryList = productService.showCategory();
         model.addAttribute("category", category);
+        model.addAttribute("product", product);
         model.addAttribute("categoryList", categoryList);
         return "admin/addProduct";
     }
@@ -45,16 +43,20 @@ public class AdminController {
         System.out.println(result);
         return "admin/addproduct";
     }
+    
 
-    @PutMapping("/admin/update/{categoryId}")
-    public String updateCategoryList(@PathVariable("categoryId") int categoryId,@RequestBody Product product){
+    @PostMapping("/admin/update/{categoryId}")
+    public String updateCategoryList(@PathVariable("categoryId") int categoryId,@ModelAttribute("product") Product product){
         System.out.println(categoryId);
         Category category = productService.findByCategory(categoryId);
         if (category!=null){
+            Random random = new Random();
+            int productRandomID = random.nextInt(150);
+            product.setId(productRandomID);
             category.getProductList().add(product);
             productService.saveProduct(product);
             productService.saveCategory(category);
-            return "admin/addproduct";
+            return "admin/showProduct";
         }else{
             return "admin/addproduct";
         }

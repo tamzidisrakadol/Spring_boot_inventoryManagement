@@ -26,3 +26,9 @@ inputFile.addEventListener('change', function(){
     reader.readAsDataURL(image);
 })
 
+function updateFormAction() {
+    var categoryId = document.getElementById("categoryList").value;
+    var form = document.getElementById("updateProductForm");
+    form.action = "/admin/update/" + categoryId;
+}
+

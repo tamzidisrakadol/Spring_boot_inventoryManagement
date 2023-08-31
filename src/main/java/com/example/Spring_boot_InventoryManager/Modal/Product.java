@@ -1,6 +1,7 @@
 package com.example.Spring_boot_InventoryManager.Modal;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 //change quantity to int , add price
 
