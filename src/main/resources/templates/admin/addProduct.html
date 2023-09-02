@@ -67,7 +67,7 @@
             <h2>Add Product Info</h2>
             <hr class="solid">
 
-            <form id="updateProductForm" method="POST" th:action="@{/admin/update/}" th:object="${product}">
+            <form id="updateProductForm" method="POST" th:action="@{/admin/update/}" th:object="${product}" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="text" name="name" th:value="${product.name}" class="form-control" id="productName" placeholder="Ex: Tomato,Bringal">
@@ -98,9 +98,13 @@
               </div>
 
               <div class="form-group mt-3">
-                <textarea placeholder="Enter description" name="description" th:value="${product.description}" id="description" class="form-control" rows="6"></textarea>
+                <textarea placeholder="Enter description" name="description" th:value="${product.description}" id="description" class="form-control" rows="2"></textarea>
               </div>
 
+              <div class="form-group">
+                <label for="image">Upload Image</label>
+                <input type="file" name="image" class="form-control" id="image" accept="image/*">
+              </div>
 
               <div class="container text-center">
                 <button type="submit" class="btn bg-primary text-white">
@@ -116,7 +120,7 @@
       </div>
     </div>
   </section>
-
+  
   <script th:src="@{/js/script.js}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
