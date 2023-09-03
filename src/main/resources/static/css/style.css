@@ -115,3 +115,18 @@ hr.solid {
     object-fit: cover;
     object-position: center;
 }
+
+.productContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust the space between containers */
+    margin: 20px;
+}
+
+.productContainer .left {
+    flex: 1;
+}
+
+.productContainer .right {
+    flex: 1;
+}

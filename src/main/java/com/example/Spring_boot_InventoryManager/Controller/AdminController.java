@@ -1,5 +1,6 @@
 package com.example.Spring_boot_InventoryManager.Controller;
 
+import com.example.Spring_boot_InventoryManager.Config.WebConfig;
 import com.example.Spring_boot_InventoryManager.Modal.Category;
 import com.example.Spring_boot_InventoryManager.Modal.Product;
 import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
@@ -25,6 +26,7 @@ public class AdminController {
 
     @Autowired
     CategoryRepo categoryRepo;
+
 
     // adding product html form
     @GetMapping("admin/addProduct")
