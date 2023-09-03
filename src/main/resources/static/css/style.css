@@ -115,18 +115,18 @@ hr.solid {
     object-fit: cover;
     object-position: center;
 }
-
-.productContainer {
+.bodyContainer{
     display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Adjust the space between containers */
-    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: lightblue;
 }
 
-.productContainer .left {
-    flex: 1;
-}
-
-.productContainer .right {
-    flex: 1;
+.bodyContainer .categoryContainer{
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
 }

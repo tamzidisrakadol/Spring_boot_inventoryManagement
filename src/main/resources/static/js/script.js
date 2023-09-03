@@ -32,3 +32,8 @@ function updateFormAction() {
     form.action = "/admin/update/" + categoryId;
 }
 
+function redirectToAnotherPage() {
+   
+    window.location.href =  "/admin/category";
+}
+

@@ -13,42 +13,46 @@
 <body>
   <section>
     <form id="updateProductForm" method="POST" th:action="@{/admin/update/}" th:object="${product}"
-              enctype="multipart/form-data">
+      enctype="multipart/form-data">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="rectangle-container">
-            <h2>Add Image</h2>
-            <hr class="solid">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="rectangle-container">
+              <h2>Add Image</h2>
+              <hr class="solid">
 
-            <!--upload Image-->
-            <div class="imageContainer">
-              <input type="file" name="image"  id="file" accept="image/*" hidden>
-              <div class="image-area">
-                <i class="fa-solid fa-upload icon"></i>
-                <h3>Upload Image</h3>
-                <p>Image size must be less than 5MB</p>
+              <!--upload Image-->
+              <div class="imageContainer">
+                <input type="file" name="image" id="file" accept="image/*" hidden>
+                <div class="image-area">
+                  <i class="fa-solid fa-upload icon"></i>
+                  <h3>Upload Image</h3>
+                  <p>Image size must be less than 5MB</p>
 
+                </div>
+                <div class="container text-center">
+                  <button type="button" class="select-image btn btn-secondary">Select Image</button>
+                </div>
               </div>
-              <div class="container text-center">
-                <button type="button" class="select-image btn btn-secondary">Select Image</button>
+
+
+              <div class="space-between-divs"></div>
+
+              <div class="container text-center mt-3">
+                <button type="button" class="btn btn-outline-primary btn-block" onclick="redirectToAnotherPage()">
+                  Create Category
+                </button>
               </div>
             </div>
-
-
-            <div class="space-between-divs"></div>
-
-
           </div>
-        </div>
 
 
-        <!--add product to desire Category-->
-        <div class="col-md-6">
-          <div class="rectangle-container">
-            <h2>Add Product Info</h2>
-            <hr class="solid">
+          <!--add product to desire Category-->
+          <div class="col-md-6">
+            <div class="rectangle-container">
+              <h2>Add Product Info</h2>
+              <hr class="solid">
 
               <div class="form-group">
                 <label for="productName">Product Name</label>
@@ -88,7 +92,7 @@
                   id="description" class="form-control" rows="2"></textarea>
               </div>
 
-          
+
 
               <div class="container text-center">
                 <button type="submit" class="btn bg-primary text-white">
@@ -98,12 +102,12 @@
                   Reset
                 </button>
               </div>
-           
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
   </section>
 
   <script th:src="@{/js/script.js}"></script>

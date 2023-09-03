@@ -32,16 +32,14 @@ public class AdminController {
     @GetMapping("admin/addProduct")
     public String addProductui(Model model) {
         model.addAttribute("title", "Add product");
-        Category category = new Category();
         Product product = new Product();
         List<Category> categoryList = productService.showCategory();
-        model.addAttribute("category", category);
         model.addAttribute("product", product);
         model.addAttribute("categoryList", categoryList);
         return "admin/addProduct";
     }
 
-    // create category
+    // create category 
     @PostMapping("/admin/createCategory")
     public String createCategory(@ModelAttribute("category") Category category) {
         Random random = new Random();
@@ -99,6 +97,15 @@ public class AdminController {
         }
 
         
+    }
+    
+    //creating category ui 
+    @GetMapping("/admin/category")
+    public String createCategoryForm(Model model){
+        model.addAttribute("title", "Create Category");
+        Category category = new Category();
+        model.addAttribute("category", category);
+        return "admin/createCategory";
     }
 
 }

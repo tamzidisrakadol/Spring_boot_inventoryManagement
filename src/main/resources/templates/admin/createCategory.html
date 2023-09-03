@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div class="bodyContainer">
+            <div class="categoryContainer">
+                <div class="category-area">
+                    <form th:action="@{/admin/createCategory}" method="POST" th:object="${category}">
+
+                        <div class="form-group">
+                          <label for="inputAddress">Category</label>
+              
+                          <input type="text" class="form-control" name="categoryName" th:value="${category.categoryName}"
+                            id="inputAddress" placeholder="Ex: Fruits,Vegetable,Drinks">
+                        </div>
+              
+                        <div class="container text-center mt-3">
+                          <button class="btn btn-outline-primary">Create Category</button>
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
