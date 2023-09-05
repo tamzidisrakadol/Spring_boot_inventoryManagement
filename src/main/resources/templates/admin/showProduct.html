@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Product</title>
 </head>
+
 <body>
     <section>
-        <h3>
-            Show All product
-        </h3>
+        
+        <div>
+            <!-- Display the product name -->
+            <h2 th:text="${product}"></h2>
+        </div>
+        <div>
+            <!-- Display the product image -->
+            <img  th:src="|data:image/png;base64,${images}|" alt="Product Image" width="400px" height="400px" >
+        </div>
+      
     </section>
 </body>
+
 </html>

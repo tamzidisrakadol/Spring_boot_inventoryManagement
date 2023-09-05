@@ -130,3 +130,20 @@ hr.solid {
     padding: 30px;
     border-radius: 30px;
 }
+
+.bodyContainer1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: lightblue;
+}
+
+
+.bodyContainer1 .imgcontainer{
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
+}

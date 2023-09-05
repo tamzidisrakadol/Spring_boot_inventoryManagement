@@ -1,7 +1,9 @@
 package com.example.Spring_boot_InventoryManager.Modal;
+
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+
 
 //change quantity to int , add price
 
@@ -13,19 +15,22 @@ public class Product {
     String description;
     int quantity;
     String expireDate;
-    String imgUrl;
+    Binary images;
+    String imageName;
     String batchNumber;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, int quantity, String expireDate, String imgUrl, String batchNumber) {
+    public Product(int id, String name, String description, int quantity, String expireDate, Binary images,
+            String imageName, String batchNumber) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.expireDate = expireDate;
-        this.imgUrl = imgUrl;
+        this.images = images;
+        this.imageName = imageName;
         this.batchNumber = batchNumber;
     }
 
@@ -69,12 +74,20 @@ public class Product {
         this.expireDate = expireDate;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public Binary getImages() {
+        return images;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImages(Binary images) {
+        this.images = images;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public String getBatchNumber() {
@@ -87,14 +100,15 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", quantity=" + quantity +
-                ", expireDate='" + expireDate + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                ", batchNumber='" + batchNumber + '\'' +
-                '}';
+        return "Product [id=" + id + ", name=" + name + ", description=" + description + ", quantity=" + quantity
+                + ", expireDate=" + expireDate + ", images=" + images + ", imageName=" + imageName + ", batchNumber="
+                + batchNumber + "]";
     }
+
+
+    
+
+    
+
+
 }

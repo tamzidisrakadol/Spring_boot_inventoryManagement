@@ -1,16 +1,22 @@
 package com.example.Spring_boot_InventoryManager.Service;
 
-
 import com.example.Spring_boot_InventoryManager.Modal.Category;
+import com.example.Spring_boot_InventoryManager.Modal.Image;
 import com.example.Spring_boot_InventoryManager.Modal.Product;
 import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
+import com.example.Spring_boot_InventoryManager.Repository.ImageRepo;
 import com.example.Spring_boot_InventoryManager.Repository.ProductRepo;
 
+import org.bson.BsonBinarySubType;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class ProductService {
@@ -21,7 +27,10 @@ public class ProductService {
     @Autowired
     ProductRepo productRepo;
 
-    public String saveProduct(Product product) {
+    @Autowired
+    ImageRepo imageRepo;
+
+    public String saveProduct(Product product) throws IOException {
         productRepo.save(product);
         return "Success";
     }
@@ -35,10 +44,12 @@ public class ProductService {
         return categoryRepo.findAll();
     }
 
-    public Category findByCategory(int id){
+    public Category findByCategory(int id) {
         Optional<Category> getCategory = categoryRepo.findById(id);
         return getCategory.orElse(null);
     }
 
+
     
+
 }

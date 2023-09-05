@@ -1,22 +1,23 @@
 package com.example.Spring_boot_InventoryManager.Controller;
 
-import com.example.Spring_boot_InventoryManager.Config.WebConfig;
 import com.example.Spring_boot_InventoryManager.Modal.Category;
+import com.example.Spring_boot_InventoryManager.Modal.Image;
 import com.example.Spring_boot_InventoryManager.Modal.Product;
 import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
+import com.example.Spring_boot_InventoryManager.Repository.ProductRepo;
 import com.example.Spring_boot_InventoryManager.Service.ProductService;
+
+import org.bson.BsonBinarySubType;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 @Controller
 public class AdminController {
@@ -27,6 +28,8 @@ public class AdminController {
     @Autowired
     CategoryRepo categoryRepo;
 
+    @Autowired
+    ProductRepo productRepo;
 
     // adding product html form
     @GetMapping("admin/addProduct")
@@ -37,9 +40,10 @@ public class AdminController {
         model.addAttribute("product", product);
         model.addAttribute("categoryList", categoryList);
         return "admin/addProduct";
+
     }
 
-    // create category 
+    // create category
     @PostMapping("/admin/createCategory")
     public String createCategory(@ModelAttribute("category") Category category) {
         Random random = new Random();
@@ -50,19 +54,22 @@ public class AdminController {
         return "redirect:/admin/addProduct";
     }
 
-    // add product to desire category
-    @PostMapping("/admin/update/{categoryId}")
-    public String updateCategoryList(@PathVariable("categoryId") int categoryId,
-            @ModelAttribute("product") Product product, @RequestParam("image") MultipartFile imageFile) {
 
-        System.out.println(categoryId);
+
+
+        @PostMapping("/admin/update/{categoryId}")
+    public String updateCategoryList(@PathVariable("categoryId") int categoryId,
+            @ModelAttribute("product") Product product, @RequestParam("images")MultipartFile imageFile,Model model)
+            throws IOException {
+
         Category category = productService.findByCategory(categoryId);
+        
         if (category != null) {
             Random random = new Random();
             int productRandomID = random.nextInt(150);
-            String imgurl = saveImage(imageFile);
-            product.setImgUrl(imgurl);
             product.setId(productRandomID);
+            product.setImageName(imageFile.getOriginalFilename());
+            product.setImages(new Binary(BsonBinarySubType.BINARY, imageFile.getBytes()));
             category.getProductList().add(product);
             productService.saveProduct(product);
             productService.saveCategory(category);
@@ -71,41 +78,6 @@ public class AdminController {
             return "admin/addproduct";
         }
 
-    }
-
-    private String saveImage(MultipartFile imageFile) {
-
-        String uploadDirectory = "static/image";
-
-        String uniqueFileName = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
-
-        try {
-            var directory = new File(uploadDirectory);
-            if (!directory.exists()) {
-                directory.mkdirs();
-            }
-
-            String filePath = uploadDirectory + uniqueFileName;
-            Files.write(Paths.get(filePath), imageFile.getBytes());
-            String imageUrl = "http://localhost:8080"+"/images/"+uniqueFileName;
-
-            return imageUrl;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        
-    }
-    
-    //creating category ui 
-    @GetMapping("/admin/category")
-    public String createCategoryForm(Model model){
-        model.addAttribute("title", "Create Category");
-        Category category = new Category();
-        model.addAttribute("category", category);
-        return "admin/createCategory";
     }
 
 }
