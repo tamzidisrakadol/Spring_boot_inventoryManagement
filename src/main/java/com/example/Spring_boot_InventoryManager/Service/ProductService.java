@@ -49,7 +49,21 @@ public class ProductService {
         return getCategory.orElse(null);
     }
 
+        public String addPhoto(MultipartFile file)throws IOException {
+        Image image = new Image();
+        Random random = new Random();
+        int imgRandom = random.nextInt(50);
+        image.setId(imgRandom);
+        image.setTitle(file.getOriginalFilename());
+        image.setImages(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
+        imageRepo.save(image);
+        return "success";
+    }
 
+
+    public Product getProduct(int id){
+        return productRepo.findById(id).get();
+    }
     
 
 }

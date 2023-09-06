@@ -54,16 +54,13 @@ public class AdminController {
         return "redirect:/admin/addProduct";
     }
 
-
-
-
-        @PostMapping("/admin/update/{categoryId}")
+    @PostMapping("/admin/update/{categoryId}")
     public String updateCategoryList(@PathVariable("categoryId") int categoryId,
-            @ModelAttribute("product") Product product, @RequestParam("images")MultipartFile imageFile,Model model)
+            @ModelAttribute("product") Product product, @RequestParam("images") MultipartFile imageFile, Model model)
             throws IOException {
 
         Category category = productService.findByCategory(categoryId);
-        
+
         if (category != null) {
             Random random = new Random();
             int productRandomID = random.nextInt(150);
