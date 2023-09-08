@@ -31,11 +31,4 @@ public class AdminRestController {
         return productService.showCategory();
     }
 
-
-    //delete this 
-    @GetMapping("/images/{id}")
-    public Optional<Product> showProductByImgUrl(@PathVariable("id")int id) {
-        Optional<Product> product = productRepo.findById(id);
-        return product;
-    }
 }

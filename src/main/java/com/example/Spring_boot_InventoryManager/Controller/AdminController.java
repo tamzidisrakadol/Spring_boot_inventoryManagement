@@ -1,7 +1,6 @@
 package com.example.Spring_boot_InventoryManager.Controller;
 
 import com.example.Spring_boot_InventoryManager.Modal.Category;
-import com.example.Spring_boot_InventoryManager.Modal.Image;
 import com.example.Spring_boot_InventoryManager.Modal.Product;
 import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
 import com.example.Spring_boot_InventoryManager.Repository.ProductRepo;
@@ -15,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
 import java.util.Random;
 
@@ -54,9 +52,16 @@ public class AdminController {
         return "redirect:/admin/addProduct";
     }
 
+    // add product to desire category
     @PostMapping("/admin/update/{categoryId}")
     public String updateCategoryList(@PathVariable("categoryId") int categoryId,
-            @ModelAttribute("product") Product product, @RequestParam("images") MultipartFile imageFile, Model model)
+            @RequestParam("images") MultipartFile imageFile,
+            @RequestParam("name") String name,
+            @RequestParam("batchnumber") String batchNumber,
+            @RequestParam("description") String description,
+            @RequestParam("expireDate") String expireDate,
+            @RequestParam("quantity") int quantity,
+            Model model)
             throws IOException {
 
         Category category = productService.findByCategory(categoryId);
@@ -64,7 +69,13 @@ public class AdminController {
         if (category != null) {
             Random random = new Random();
             int productRandomID = random.nextInt(150);
+            Product product = new Product();
             product.setId(productRandomID);
+            product.setName(name);
+            product.setBatchNumber(batchNumber);
+            product.setDescription(description);
+            product.setExpireDate(expireDate);
+            product.setQuantity(quantity);
             product.setImageName(imageFile.getOriginalFilename());
             product.setImages(new Binary(BsonBinarySubType.BINARY, imageFile.getBytes()));
             category.getProductList().add(product);
@@ -76,5 +87,16 @@ public class AdminController {
         }
 
     }
+
+    // creating category ui
+    @GetMapping("/admin/category")
+    public String createCategoryForm(Model model) {
+        model.addAttribute("title", "Create Category");
+        Category category = new Category();
+        model.addAttribute("category", category);
+        return "admin/createCategory";
+    }
+
+
 
 }
