@@ -9,16 +9,15 @@
 
 <body>
     <section>
-        
-        <div>
-            <!-- Display the product name -->
-            <h2 th:text="${product}"></h2>
+      <div class="productContainer">
+        <div class="row">
+            <div class="showProductContainer">
+               
+                    <img src="https://images.unsplash.com/photo-1682686581030-7fa4ea2b96c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Product Img" width="200" height="200"/>
+                
+            </div>
         </div>
-        <div>
-            <!-- Display the product image -->
-            <img  th:src="|data:image/png;base64,${images}|" alt="Product Image" width="400px" height="400px" >
-        </div>
-      
+      </div>
     </section>
 </body>
 

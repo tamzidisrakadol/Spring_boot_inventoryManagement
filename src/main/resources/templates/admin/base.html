@@ -15,7 +15,7 @@
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
 
   <title th:text="${title}"></title>
 </head>
@@ -28,22 +28,22 @@
       <li>
         <a href="" th:href="@{/admin/addProduct}"> <i class="fa-solid fa-plus"></i>
           ADD PRODUCT</a>
-       
+
       </li>
       <li>
-        <a href="#"><i class="fa-solid fa-list"></i>
-         SHOW PRODUCT</a>
-        
+        <a href="#" th:href="@{/admin/showProduct}"><i class="fa-solid fa-list"></i>
+          SHOW PRODUCT</a>
+
       </li>
       <li>
         <a href="#"> <i class="fa-solid fa-plus"></i>
           ADD Employee</a>
-       
+
       </li>
       <li>
         <a href="#"><i class="fa-solid fa-list"></i>
           SHOW Employee</a>
-        
+
       </li>
     </ul>
   </div>
@@ -51,12 +51,12 @@
   <!--content-->
 
   <div class="main">
-  <div class="content">
-    <div th:replace="${content}"></div>
+    <div class="content">
+      <div th:replace="${content}"></div>
+    </div>
   </div>
-</div>
 
-<script th:src="@{/js/script.js}"></script>
+  <script th:src="@{/js/script.js}"></script>
 </body>
 
 </html>

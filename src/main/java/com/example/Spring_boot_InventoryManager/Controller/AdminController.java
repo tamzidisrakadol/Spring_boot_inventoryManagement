@@ -98,5 +98,13 @@ public class AdminController {
     }
 
 
+    @GetMapping("/admin/showProduct")
+    public String showProductUI(Model model){
+        List<Product> showAllProduct = productService.showAllProduct();
+        model.addAttribute("productList", showAllProduct);
+        return "admin/showProduct";
+    }
+
+
 
 }

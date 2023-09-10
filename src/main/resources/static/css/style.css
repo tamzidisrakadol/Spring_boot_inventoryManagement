@@ -11,7 +11,7 @@ body {
 
 .sidebar {
     position: fixed;
-    background-color: #5E7D7E;
+    background-color: #202020;
     width: 200px;
     height: 100%;
     top: 0;
@@ -30,7 +30,7 @@ body {
 
 
 .sidebar ul li {
-    background: #5E7D7E;
+    background: #202020;
     margin: 15px 0;
 }
 
@@ -48,8 +48,12 @@ body {
 
 .main {
     margin-left: 200px;
-    padding: 30px;
     background: #E5E4E2;
+}
+
+.addProductContainer{
+    padding: 20px;
+
 }
 
 
@@ -143,6 +147,22 @@ hr.solid {
 .bodyContainer1 .imgcontainer{
     max-width: 400px;
     width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.productContainer{
+    display:flex;
+    min-height: 100vh;
+    background: lightblue;
+    padding: 25px;
+}
+
+.productContainer .showProductContainer{
+    max-width: 200px;
+    width: 100%;
+    height: 250px;
     background: #fff;
     padding: 30px;
     border-radius: 30px;
