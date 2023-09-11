@@ -157,6 +157,7 @@ hr.solid {
     min-height: 100vh;
     background: lightblue;
     padding: 25px;
+    overflow: hidden;
 }
 
 .productContainer .showProductContainer{
@@ -164,6 +165,6 @@ hr.solid {
     width: 100%;
     height: 250px;
     background: #fff;
-    padding: 30px;
     border-radius: 30px;
+    overflow: hidden;
 }

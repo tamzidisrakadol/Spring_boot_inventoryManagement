@@ -2,6 +2,7 @@ package com.example.Spring_boot_InventoryManager.Controller;
 
 import com.example.Spring_boot_InventoryManager.Modal.Category;
 import com.example.Spring_boot_InventoryManager.Modal.Product;
+import com.example.Spring_boot_InventoryManager.Modal.ProductInfo;
 import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
 import com.example.Spring_boot_InventoryManager.Repository.ProductRepo;
 import com.example.Spring_boot_InventoryManager.Service.ProductService;
@@ -14,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Random;
 
@@ -97,14 +100,32 @@ public class AdminController {
         return "admin/createCategory";
     }
 
+    // @GetMapping("/admin/showProduct")
+    // public String showProductUI(Model model){
+    // List<Product> showAllProduct = productService.showAllProduct();
+    // model.addAttribute("productList", showAllProduct);
+    // List<String> imgUrl = getImages(showAllProduct);
+    // return "admin/showProduct";
+    // }
 
     @GetMapping("/admin/showProduct")
-    public String showProductUI(Model model){
+    public String showProductUI(Model model) {
         List<Product> showAllProduct = productService.showAllProduct();
-        model.addAttribute("productList", showAllProduct);
+        // Create a list of base64-encoded image data from the binary image data
+
+        List<ProductInfo> newProductslist = new ArrayList<>();
+
+        for(Product product:showAllProduct){
+           ProductInfo productInfo = new ProductInfo();
+           productInfo.setName(product.getName());
+           productInfo.setImgUrl(Base64.getEncoder().encodeToString(product.getImages().getData()));
+           newProductslist.add(productInfo);
+        }
+        // Add the list of base64-encoded image data to the model
+        model.addAttribute("newProductslist", newProductslist);
+       
+
         return "admin/showProduct";
     }
-
-
 
 }

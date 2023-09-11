@@ -9,15 +9,19 @@
 
 <body>
     <section>
-      <div class="productContainer">
-        <div class="row">
-            <div class="showProductContainer">
-               
-                    <img src="https://images.unsplash.com/photo-1682686581030-7fa4ea2b96c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Product Img" width="200" height="200"/>
-                
+        <div class="productContainer">
+            <div class="row">
+                <!-- Iterate over the list of images and product names -->
+                <div th:each="product:${newProductslist}" class="showProductContainer">
+                    <div class="productBox">
+                        <!-- Product Image -->
+                        <img  th:src="|data:image/png;base64,${product.imgUrl}|" alt="Product Img" width="200" height="200" />
+                        <!-- Product Name -->
+                        <h3  th:text="${product.name}"></h3>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
     </section>
 </body>
 
