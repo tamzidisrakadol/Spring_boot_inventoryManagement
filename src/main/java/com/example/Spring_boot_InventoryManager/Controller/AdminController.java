@@ -100,16 +100,10 @@ public class AdminController {
         return "admin/createCategory";
     }
 
-    // @GetMapping("/admin/showProduct")
-    // public String showProductUI(Model model){
-    // List<Product> showAllProduct = productService.showAllProduct();
-    // model.addAttribute("productList", showAllProduct);
-    // List<String> imgUrl = getImages(showAllProduct);
-    // return "admin/showProduct";
-    // }
-
+    //showing all product 
     @GetMapping("/admin/showProduct")
     public String showProductUI(Model model) {
+        model.addAttribute("title", "Show Product");
         List<Product> showAllProduct = productService.showAllProduct();
         // Create a list of base64-encoded image data from the binary image data
 

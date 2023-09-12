@@ -51,7 +51,7 @@ body {
     background: #E5E4E2;
 }
 
-.addProductContainer{
+.addProductContainer {
     padding: 20px;
 
 }
@@ -75,7 +75,7 @@ hr.solid {
     border-top: 3px solid #bbb;
 }
 
-.imageContainer{
+.imageContainer {
     max-width: 350px;
     width: 100%;
     background: blanchedalmond;
@@ -83,7 +83,7 @@ hr.solid {
     border-radius: 15px;
 }
 
-.image-area{
+.image-area {
     position: relative;
     width: 100%;
     height: 200px;
@@ -97,21 +97,22 @@ hr.solid {
     flex-direction: column;
 }
 
-.image-area .icon{
+.image-area .icon {
     font-size: 60px;
 }
 
-.image-area h3{
+.image-area h3 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 6px;
 }
-.image-area p{
+
+.image-area p {
     color: #999;
 }
 
-.image-area img{
-    position:absolute;
+.image-area img {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -119,7 +120,8 @@ hr.solid {
     object-fit: cover;
     object-position: center;
 }
-.bodyContainer{
+
+.bodyContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,7 +129,7 @@ hr.solid {
     background: lightblue;
 }
 
-.bodyContainer .categoryContainer{
+.bodyContainer .categoryContainer {
     max-width: 400px;
     width: 100%;
     background: #fff;
@@ -135,7 +137,7 @@ hr.solid {
     border-radius: 30px;
 }
 
-.bodyContainer1{
+.bodyContainer1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,7 +146,7 @@ hr.solid {
 }
 
 
-.bodyContainer1 .imgcontainer{
+.bodyContainer1 .imgcontainer {
     max-width: 400px;
     width: 100%;
     background: #fff;
@@ -152,19 +154,39 @@ hr.solid {
     border-radius: 30px;
 }
 
-.productContainer{
-    display:flex;
+.productContainer {
+    display: flex;
     min-height: 100vh;
-    background: lightblue;
-    padding: 25px;
-    overflow: hidden;
+    padding: 25px;  
 }
 
-.productContainer .showProductContainer{
+
+
+.productContainer .showProductContainer {
     max-width: 200px;
     width: 100%;
     height: 250px;
     background: #fff;
     border-radius: 30px;
+    margin-right: 10px;
     overflow: hidden;
 }
+
+.productBox img{
+   object-fit: cover;
+}
+
+.productName {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.productName h3{
+    font-size: 18px;
+    font-weight: 400;
+    font-family: sans-serif;
+}
+
+
+

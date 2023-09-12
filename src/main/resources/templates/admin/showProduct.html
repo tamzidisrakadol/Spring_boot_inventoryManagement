@@ -15,9 +15,14 @@
                 <div th:each="product:${newProductslist}" class="showProductContainer">
                     <div class="productBox">
                         <!-- Product Image -->
-                        <img  th:src="|data:image/png;base64,${product.imgUrl}|" alt="Product Img" width="200" height="200" />
+                        <img th:src="|data:image/png;base64,${product.imgUrl}|" alt="Product Img" width="200"
+                            height="190" />
+
                         <!-- Product Name -->
-                        <h3  th:text="${product.name}"></h3>
+                        <div class="productName">
+                            <h3 th:text="${product.name}"></h3>
+                            <p>15$</p>
+                        </div>
                     </div>
                 </div>
             </div>
