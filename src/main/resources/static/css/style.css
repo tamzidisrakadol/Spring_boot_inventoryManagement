@@ -155,7 +155,7 @@ hr.solid {
 }
 
 .productContainer {
-    display: flex;
+    display:flexbox;
     min-height: 100vh;
     padding: 25px;  
 }
@@ -167,8 +167,9 @@ hr.solid {
     width: 100%;
     height: 250px;
     background: #fff;
-    border-radius: 30px;
+    border-radius: 15px;
     margin-right: 10px;
+    margin-bottom: 10px;
     overflow: hidden;
 }
 

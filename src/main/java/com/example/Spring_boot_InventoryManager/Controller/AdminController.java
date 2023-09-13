@@ -64,6 +64,7 @@ public class AdminController {
             @RequestParam("description") String description,
             @RequestParam("expireDate") String expireDate,
             @RequestParam("quantity") int quantity,
+            @RequestParam("price") int price,
             Model model)
             throws IOException {
 
@@ -81,6 +82,7 @@ public class AdminController {
             product.setQuantity(quantity);
             product.setImageName(imageFile.getOriginalFilename());
             product.setImages(new Binary(BsonBinarySubType.BINARY, imageFile.getBytes()));
+            product.setPrice(price);
             category.getProductList().add(product);
             productService.saveProduct(product);
             productService.saveCategory(category);
@@ -105,20 +107,16 @@ public class AdminController {
     public String showProductUI(Model model) {
         model.addAttribute("title", "Show Product");
         List<Product> showAllProduct = productService.showAllProduct();
-        // Create a list of base64-encoded image data from the binary image data
-
+       
         List<ProductInfo> newProductslist = new ArrayList<>();
-
         for(Product product:showAllProduct){
            ProductInfo productInfo = new ProductInfo();
            productInfo.setName(product.getName());
            productInfo.setImgUrl(Base64.getEncoder().encodeToString(product.getImages().getData()));
+           productInfo.setPrice(product.getPrice());
            newProductslist.add(productInfo);
         }
-        // Add the list of base64-encoded image data to the model
         model.addAttribute("newProductslist", newProductslist);
-       
-
         return "admin/showProduct";
     }
 

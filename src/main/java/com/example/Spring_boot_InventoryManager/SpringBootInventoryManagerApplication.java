@@ -9,6 +9,7 @@ public class SpringBootInventoryManagerApplication {
 	public static void main(String[] args) {
 	SpringApplication.run(SpringBootInventoryManagerApplication.class, args);
 
+	
 
 
 	}

@@ -1,15 +1,18 @@
 package com.example.Spring_boot_InventoryManager.Modal;
 
 public class ProductInfo {
+
     String name;
     String imgUrl;
+    int price;
 
-    public ProductInfo() {
-    }
-
-    public ProductInfo(String name, String imgUrl) {
+    public ProductInfo(String name, String imgUrl, int price) {
         this.name = name;
         this.imgUrl = imgUrl;
+        this.price = price;
+    }
+
+    public ProductInfo() {
     }
 
     public String getName() {
@@ -26,6 +29,14 @@ public class ProductInfo {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
 }

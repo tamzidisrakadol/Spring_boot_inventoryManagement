@@ -14,6 +14,7 @@ public class Product {
     String name;
     String description;
     int quantity;
+    int price;
     String expireDate;
     Binary images;
     String imageName;
@@ -22,12 +23,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, String description, int quantity, String expireDate, Binary images,
+    public Product(int id, String name, String description, int quantity, int price, String expireDate, Binary images,
             String imageName, String batchNumber) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
+        this.price = price;
         this.expireDate = expireDate;
         this.images = images;
         this.imageName = imageName;
@@ -66,6 +68,14 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public String getExpireDate() {
         return expireDate;
     }
@@ -97,16 +107,6 @@ public class Product {
     public void setBatchNumber(String batchNumber) {
         this.batchNumber = batchNumber;
     }
-
-    @Override
-    public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", description=" + description + ", quantity=" + quantity
-                + ", expireDate=" + expireDate + ", images=" + images + ", imageName=" + imageName + ", batchNumber="
-                + batchNumber + "]";
-    }
-
-
-    
 
     
 
