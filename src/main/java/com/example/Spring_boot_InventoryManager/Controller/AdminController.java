@@ -120,4 +120,12 @@ public class AdminController {
         return "admin/showProduct";
     }
 
+    @GetMapping("/admin/{productName}")
+    public String getCategoryByProductName(@PathVariable("productName")String ProductName,Model model){
+        Category category = productService.findCategoryByProductName(ProductName);
+        System.out.println(category);
+        model.addAttribute("category", category);
+        return "admin/getCategoryByProduct";
+    }
+
 }

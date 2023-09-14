@@ -161,7 +161,6 @@ hr.solid {
 }
 
 
-
 .productContainer .showProductContainer {
     max-width: 200px;
     width: 100%;
@@ -169,6 +168,7 @@ hr.solid {
     background: #fff;
     border-radius: 15px;
     margin-right: 10px;
+    margin-left: 20px;
     margin-bottom: 10px;
     overflow: hidden;
 }

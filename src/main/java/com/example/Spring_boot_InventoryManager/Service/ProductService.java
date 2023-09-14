@@ -1,10 +1,13 @@
 package com.example.Spring_boot_InventoryManager.Service;
-
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import com.example.Spring_boot_InventoryManager.Modal.Category;
 import com.example.Spring_boot_InventoryManager.Modal.Product;
 import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
 import com.example.Spring_boot_InventoryManager.Repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.LookupOperation;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -20,6 +23,13 @@ public class ProductService {
 
     @Autowired
     ProductRepo productRepo;
+
+    private final MongoTemplate mongoTemplate;
+
+
+    public ProductService(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
 
     public String saveProduct(Product product) throws IOException {
@@ -49,6 +59,31 @@ public class ProductService {
 
     public List<Product> showAllProduct(){
         return productRepo.findAll();
+    }
+
+
+    public Category findCategoryByProductName(String productName) {
+        // Create an aggregation query to join 'Category' and 'Product' collections
+        LookupOperation lookup = LookupOperation.newLookup()
+                .from("Products") // Name of the target collection
+                .localField("productList") // Field in 'Category' collection
+                .foreignField("_id") // Field in 'Product' collection
+                .as("products");
+
+        // Match the 'Product' with the specified name
+        Criteria matchCriteria = Criteria.where("products.name").is(productName);
+
+        // Create the aggregation pipeline
+        Aggregation aggregation = Aggregation.newAggregation(
+                lookup,
+                Aggregation.match(matchCriteria)
+        );
+
+        // Execute the aggregation query
+        Category category = mongoTemplate.aggregate(aggregation, "Category", Category.class)
+                .getUniqueMappedResult();
+
+        return category;
     }
     
 
