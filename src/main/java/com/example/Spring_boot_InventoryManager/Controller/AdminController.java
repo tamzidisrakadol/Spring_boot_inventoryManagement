@@ -10,6 +10,9 @@ import com.example.Spring_boot_InventoryManager.Service.ProductService;
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +34,9 @@ public class AdminController {
 
     @Autowired
     ProductRepo productRepo;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     // adding product html form
     @GetMapping("admin/addProduct")
@@ -120,11 +126,31 @@ public class AdminController {
         return "admin/showProduct";
     }
 
-    @GetMapping("/admin/{productName}")
-    public String getCategoryByProductName(@PathVariable("productName")String ProductName,Model model){
-        Category category = productService.findCategoryByProductName(ProductName);
-        System.out.println(category);
-        model.addAttribute("category", category);
+    @GetMapping("/admin/{categoryName}")
+    public String getCategoryByProductName(@PathVariable("categoryName")String categoryName,Model model){
+        // Category category = productService.findCategoryByProductName(productName);
+        // System.out.println(category);
+        // model.addAttribute("category", category);
+        Query query = new Query();
+        query.addCriteria(Criteria.where("categoryName").is(categoryName));
+        List<Category> categoriyList = mongoTemplate.find(query, Category.class);
+
+        
+        List<Product> matchingProducts = new ArrayList<>();    
+        for (Category category : categoriyList) {
+            // Iterate through the productList of each Category
+            for (Product product : category.getProductList()) {
+                // Check if the product name matches the provided name
+                if (product.getName().equals("Capcisum")) {
+                    // Add the matching product to the list
+                    matchingProducts.add(product);
+                }
+            }
+            
+            String batchNumber = matchingProducts.get(0).getBatchNumber();
+            model.addAttribute("batchNumber", batchNumber);
+        }
+
         return "admin/getCategoryByProduct";
     }
 

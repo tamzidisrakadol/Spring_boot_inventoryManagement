@@ -24,12 +24,12 @@ public class ProductService {
     @Autowired
     ProductRepo productRepo;
 
-    private final MongoTemplate mongoTemplate;
+    // private final MongoTemplate mongoTemplate;
 
 
-    public ProductService(MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
-    }
+    // public ProductService(MongoTemplate mongoTemplate) {
+    //     this.mongoTemplate = mongoTemplate;
+    // }
 
 
     public String saveProduct(Product product) throws IOException {
@@ -62,29 +62,29 @@ public class ProductService {
     }
 
 
-    public Category findCategoryByProductName(String productName) {
-        // Create an aggregation query to join 'Category' and 'Product' collections
-        LookupOperation lookup = LookupOperation.newLookup()
-                .from("Products") // Name of the target collection
-                .localField("productList") // Field in 'Category' collection
-                .foreignField("_id") // Field in 'Product' collection
-                .as("products");
+    // public Category findCategoryByProductName(String productName) {
+    //     // Create an aggregation query to join 'Category' and 'Product' collections
+    //     LookupOperation lookup = LookupOperation.newLookup()
+    //             .from("Products") // Name of the target collection
+    //             .localField("productList") // Field in 'Category' collection
+    //             .foreignField("_id") // Field in 'Product' collection
+    //             .as("products");
 
-        // Match the 'Product' with the specified name
-        Criteria matchCriteria = Criteria.where("products.name").is(productName);
+    //     // Match the 'Product' with the specified name
+    //     Criteria matchCriteria = Criteria.where("products.name").is(productName);
 
-        // Create the aggregation pipeline
-        Aggregation aggregation = Aggregation.newAggregation(
-                lookup,
-                Aggregation.match(matchCriteria)
-        );
+    //     // Create the aggregation pipeline
+    //     Aggregation aggregation = Aggregation.newAggregation(
+    //             lookup,
+    //             Aggregation.match(matchCriteria)
+    //     );
 
-        // Execute the aggregation query
-        Category category = mongoTemplate.aggregate(aggregation, "Category", Category.class)
-                .getUniqueMappedResult();
+    //     // Execute the aggregation query
+    //     Category category = mongoTemplate.aggregate(aggregation, "Category", Category.class)
+    //             .getUniqueMappedResult();
 
-        return category;
-    }
+    //     return category;
+    // }
     
 
 }
