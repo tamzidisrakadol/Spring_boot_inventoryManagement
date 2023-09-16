@@ -135,7 +135,7 @@ public class AdminController {
         query.addCriteria(Criteria.where("categoryName").is(categoryName));
         List<Category> categoriyList = mongoTemplate.find(query, Category.class);
 
-        
+
         List<Product> matchingProducts = new ArrayList<>();    
         for (Category category : categoriyList) {
             // Iterate through the productList of each Category
@@ -151,7 +151,15 @@ public class AdminController {
             model.addAttribute("batchNumber", batchNumber);
         }
 
-        return "admin/getCategoryByProduct";
+        return "";
+    }
+
+    @GetMapping("/admin/getCategoryList")
+    public String getCategoryList(Model model){
+        model.addAttribute("title", "Category List");
+        List<Category> categories = productService.showCategory();
+        model.addAttribute("categories", categories);
+        return "admin/getCategorylist";
     }
 
 }
