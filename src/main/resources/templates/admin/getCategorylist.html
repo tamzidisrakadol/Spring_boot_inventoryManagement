@@ -21,7 +21,7 @@
                         <tr th:each="categorylist:${categories}">
                             <td scope="row" th:text="${categorylist.categoryId}"></td>
                             <td scope="row" th:text="${categorylist.categoryName}"></td>
-                            <td><a href="#" class="btn btn-primary btn-sm">Show</a></td>
+                            <td><a href="#" th:href="@{'/admin/'+${categorylist.categoryName}}" class="btn btn-primary btn-sm">Show</a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -38,7 +38,7 @@ public class AdminController {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    // adding product html form
+    // adding product html-form
     @GetMapping("admin/addProduct")
     public String addProductui(Model model) {
         model.addAttribute("title", "Add product");
@@ -108,58 +108,56 @@ public class AdminController {
         return "admin/createCategory";
     }
 
-    //showing all product 
+    // showing all product
     @GetMapping("/admin/showProduct")
     public String showProductUI(Model model) {
         model.addAttribute("title", "Show Product");
         List<Product> showAllProduct = productService.showAllProduct();
-       
+
         List<ProductInfo> newProductslist = new ArrayList<>();
-        for(Product product:showAllProduct){
-           ProductInfo productInfo = new ProductInfo();
-           productInfo.setName(product.getName());
-           productInfo.setImgUrl(Base64.getEncoder().encodeToString(product.getImages().getData()));
-           productInfo.setPrice(product.getPrice());
-           newProductslist.add(productInfo);
+        for (Product product : showAllProduct) {
+            ProductInfo productInfo = new ProductInfo();
+            productInfo.setName(product.getName());
+            productInfo.setImgUrl(Base64.getEncoder().encodeToString(product.getImages().getData()));
+            productInfo.setPrice(product.getPrice());
+            newProductslist.add(productInfo);
         }
         model.addAttribute("newProductslist", newProductslist);
         return "admin/showProduct";
     }
 
-    @GetMapping("/admin/{categoryName}")
-    public String getCategoryByProductName(@PathVariable("categoryName")String categoryName,Model model){
-        // Category category = productService.findCategoryByProductName(productName);
-        // System.out.println(category);
-        // model.addAttribute("category", category);
-        Query query = new Query();
-        query.addCriteria(Criteria.where("categoryName").is(categoryName));
-        List<Category> categoriyList = mongoTemplate.find(query, Category.class);
-
-
-        List<Product> matchingProducts = new ArrayList<>();    
-        for (Category category : categoriyList) {
-            // Iterate through the productList of each Category
-            for (Product product : category.getProductList()) {
-                // Check if the product name matches the provided name
-                if (product.getName().equals("Capcisum")) {
-                    // Add the matching product to the list
-                    matchingProducts.add(product);
-                }
-            }
-            
-            String batchNumber = matchingProducts.get(0).getBatchNumber();
-            model.addAttribute("batchNumber", batchNumber);
-        }
-
-        return "";
-    }
-
+    // showing all category
     @GetMapping("/admin/getCategoryList")
-    public String getCategoryList(Model model){
+    public String getCategoryList(Model model) {
         model.addAttribute("title", "Category List");
         List<Category> categories = productService.showCategory();
         model.addAttribute("categories", categories);
         return "admin/getCategorylist";
     }
 
+    @GetMapping("/admin/{categoryName}")
+    public String getCategoryByProductName(@PathVariable("categoryName") String categoryName, Model model) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("categoryName").is(categoryName));
+        List<Category> categoriyList = mongoTemplate.find(query, Category.class);
+        List<Product> productList = categoriyList.get(0).getProductList();
+        model.addAttribute("productList",productList);
+        return "admin/showProductbyCategory";
+    }
+
 }
+
+// List<Product> matchingProducts = new ArrayList<>();
+// for (Category category : categoriyList) {
+// // Iterate through the productList of each Category
+// for (Product product : category.getProductList()) {
+// // Check if the product name matches the provided name
+// if (product.getName().equals("Capcisum")) {
+// // Add the matching product to the list
+// matchingProducts.add(product);
+// }
+// }
+
+// String batchNumber = matchingProducts.get(0).getBatchNumber();
+// model.addAttribute("batchNumber", batchNumber);
+// }
