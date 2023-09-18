@@ -135,13 +135,25 @@ public class AdminController {
         return "admin/getCategorylist";
     }
 
+
+    //showing products by category-wise 
     @GetMapping("/admin/{categoryName}")
     public String getCategoryByProductName(@PathVariable("categoryName") String categoryName, Model model) {
         Query query = new Query();
         query.addCriteria(Criteria.where("categoryName").is(categoryName));
         List<Category> categoriyList = mongoTemplate.find(query, Category.class);
         List<Product> productList = categoriyList.get(0).getProductList();
-        model.addAttribute("productList",productList);
+        List<ProductInfo> categoryWiseProductlist = new ArrayList<>();
+        for (Product product : productList){
+            ProductInfo productInfo = new ProductInfo();
+            productInfo.setName(product.getName());
+            productInfo.setPrice(product.getPrice());
+            productInfo.setImgUrl(Base64.getEncoder().encodeToString(product.getImages().getData()));
+            categoryWiseProductlist.add(productInfo);
+        }
+
+        model.addAttribute("productList",categoryWiseProductlist);
+        model.addAttribute("title", categoryName);
         return "admin/showProductbyCategory";
     }
 

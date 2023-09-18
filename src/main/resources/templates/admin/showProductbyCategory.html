@@ -7,11 +7,33 @@
 </head>
 <body>
     <section>
-        <div th:each="product: ${productList}">
+        <div class="productContainer">
+            <div class="row">
+                <!-- Iterate over the list of images and product names -->
+                <div th:each="product:${productList}" class="showProductContainer">
+                    <div class="productBox">
+                        <!-- Product Image -->
+                        <img th:src="|data:image/png;base64,${product.imgUrl}|" alt="Product Img" width="200"
+                            height="190" />
 
-            <h1 th:text="${product.name}">Products</h1>
+                        <!-- Product Name -->
+                        <div class="productName">
+                            <h3 th:text="${product.name}"></h3>
+                            <p th:text="${product.price}+'$'"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
     </section>
 </body>
 </html>
+
+
+
+<!-- 
+<div th:each="product: ${productList}">
+
+    <h1 th:text="${product.name}">Products</h1>
+</div> -->
