@@ -160,7 +160,7 @@ public class AdminController {
         return "admin/showProductbyCategory";
     }
 
-    //showing product details
+    // showing product details
     @GetMapping("/admin/{categoryID}/{id}")
     public String updateProductInfoByCategory(@PathVariable("categoryID") int categoryID,
             @PathVariable("id") int productID, Model model) {
@@ -170,28 +170,26 @@ public class AdminController {
         return "admin/updateProductByCategory";
     }
 
+    // update product info
     @PostMapping("admin/updateProduct/{categoryID}")
     public String updateProductinfoByCategoryid(@PathVariable("categoryID") int categoryID, Model model,
-            @RequestParam("name") String productName,
-            @RequestParam("id") int productId,
-            @RequestParam("price") int price) throws  IOException{
+            @RequestParam("id") int productId) {
 
+        List<Product> testProduct = new ArrayList<>();
         Category category = productService.findByCategory(categoryID);
-        if(category != null){
-             Product product = new Product();
-             product.setId(productId);
-             product.setName(productName);
-             product.setPrice(price);
-             category.getProductList().add(product);
-            productService.saveProduct(product);
-            productService.saveCategory(category);
+        if (category != null) {
+            for (Product product : category.getProductList()) {
+                if (product.getId() == productId) {
+                    testProduct.add(product);
+                }
+            }
+            System.out.println(testProduct.get(0).getName());
 
-           return  "redirect:/admin/getCategorylist";
-        }else{
-            return "/admin/updateProductByCategory";
+            return "redirect:/admin/"+category.getCategoryName();
+        } else {
+            return "admin/updateProductByCategory";
         }
 
-        
     }
 
 }
