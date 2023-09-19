@@ -117,6 +117,7 @@ public class AdminController {
         List<ProductInfo> newProductslist = new ArrayList<>();
         for (Product product : showAllProduct) {
             ProductInfo productInfo = new ProductInfo();
+            productInfo.setId(product.getId());
             productInfo.setName(product.getName());
             productInfo.setImgUrl(Base64.getEncoder().encodeToString(product.getImages().getData()));
             productInfo.setPrice(product.getPrice());
@@ -135,27 +136,63 @@ public class AdminController {
         return "admin/getCategorylist";
     }
 
-
-    //showing products by category-wise 
+    // showing products by category-wise
     @GetMapping("/admin/{categoryName}")
     public String getCategoryByProductName(@PathVariable("categoryName") String categoryName, Model model) {
         Query query = new Query();
         query.addCriteria(Criteria.where("categoryName").is(categoryName));
         List<Category> categoriyList = mongoTemplate.find(query, Category.class);
+        int id = categoriyList.get(0).getCategoryId();
         List<Product> productList = categoriyList.get(0).getProductList();
         List<ProductInfo> categoryWiseProductlist = new ArrayList<>();
-        for (Product product : productList){
+        for (Product product : productList) {
             ProductInfo productInfo = new ProductInfo();
+            productInfo.setId(product.getId());
             productInfo.setName(product.getName());
             productInfo.setPrice(product.getPrice());
             productInfo.setImgUrl(Base64.getEncoder().encodeToString(product.getImages().getData()));
             categoryWiseProductlist.add(productInfo);
         }
 
-        model.addAttribute("productList",categoryWiseProductlist);
+        model.addAttribute("productList", categoryWiseProductlist);
         model.addAttribute("title", categoryName);
+        model.addAttribute("id", id);
         return "admin/showProductbyCategory";
     }
+
+    //showing product details
+    @GetMapping("/admin/{categoryID}/{id}")
+    public String updateProductInfoByCategory(@PathVariable("categoryID") int categoryID,
+            @PathVariable("id") int productID, Model model) {
+        model.addAttribute("categoryID", categoryID);
+        Product productInfoFromDB = productService.getProductInfo(productID);
+        model.addAttribute("productInfoFromDB", productInfoFromDB);
+        return "admin/updateProductByCategory";
+    }
+
+    // @PostMapping("admin/updateProduct/{categoryID}")
+    // public String updateProductinfoByCategoryid(@PathVariable("categoryID") int categoryID, Model model,
+    //         @RequestParam("name") String productName,
+    //         @RequestParam("id") int productId,
+    //         @RequestParam("price") int price) throws  IOException{
+
+    //     Category category = productService.findByCategory(categoryID);
+    //     if(category != null){
+    //          Product product = new Product();
+    //          product.setId(productId);
+    //          product.setName(productName);
+    //          product.setPrice(price);
+    //          category.getProductList().add(product);
+    //         productService.saveProduct(product);
+    //         productService.saveCategory(category);
+
+    //        return  "redirect:/admin/getCategorylist";
+    //     }else{
+    //         return "/admin/updateProductByCategory";
+    //     }
+
+        
+    // }
 
 }
 

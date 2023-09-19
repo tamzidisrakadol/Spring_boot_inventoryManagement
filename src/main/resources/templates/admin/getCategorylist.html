@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <section>
         <div class="card">
             <div class="card-body">
                 <table class="table table-bordered">
-                    <thead class="thead-dark"> 
+                    <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Category Name</th>
@@ -21,7 +23,9 @@
                         <tr th:each="categorylist:${categories}">
                             <td scope="row" th:text="${categorylist.categoryId}"></td>
                             <td scope="row" th:text="${categorylist.categoryName}"></td>
-                            <td><a href="#" th:href="@{'/admin/'+${categorylist.categoryName}}" class="btn btn-primary btn-sm">Show</a></td>
+                            <td><a href="#"
+                                    th:href="@{'/admin/'+${categorylist.categoryName}}"
+                                    class="btn btn-primary btn-sm">Show</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -29,4 +33,5 @@
         </div>
     </section>
 </body>
+
 </html>

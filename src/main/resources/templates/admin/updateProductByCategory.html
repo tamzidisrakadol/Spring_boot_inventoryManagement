@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h1 th:text="${categoryID}"></h1>
+        <form method="post" th:object="${productInfoFromDB}"  th:action="@{/admin/updateProduct/{categoryID}(categoryID=${categoryID})}" >
+            <input type="text" name="id" th:value="${productInfoFromDB.id}">
+            <input type="text" name="name" th:value="${productInfoFromDB.name}">
+            <input type="text"   th:value="${productInfoFromDB.quantity}">
+            <input type="number" name="price" th:value="${productInfoFromDB.price}">
+            <input type="text"  th:value="${productInfoFromDB.expireDate}">
+            <input type="text" th:value="${productInfoFromDB.batchNumber}">
+            <button type="submit" class="btn bg-primary text-white">
+                Submit
+              </button>
+        </form>
+
+    </section>
+</body>
+</html>

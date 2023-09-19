@@ -8,9 +8,12 @@
 <body>
     <section>
         <div class="productContainer">
+            <input type="hidden" th:value="${id}">
+            
             <div class="row">
                 <!-- Iterate over the list of images and product names -->
-                <div th:each="product:${productList}" class="showProductContainer">
+                <div th:each="product:${productList}" class="showProductContainerByCategory">
+                   <input type="hidden" th:value="${product.id}">
                     <div class="productBox">
                         <!-- Product Image -->
                         <img th:src="|data:image/png;base64,${product.imgUrl}|" alt="Product Img" width="200"
@@ -21,6 +24,9 @@
                             <h3 th:text="${product.name}"></h3>
                             <p th:text="${product.price}+'$'"></p>
                         </div>
+                        <div class="text-center">
+                            <a href="#" th:href="@{'/admin/'+${id}+'/'+${product.id}}" class="btn btn-outline-primary btn-sm">EDIT PRODUCT</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -30,10 +36,3 @@
 </body>
 </html>
 
-
-
-<!-- 
-<div th:each="product: ${productList}">
-
-    <h1 th:text="${product.name}">Products</h1>
-</div> -->

@@ -24,14 +24,7 @@ public class ProductService {
     @Autowired
     ProductRepo productRepo;
 
-    // private final MongoTemplate mongoTemplate;
-
-
-    // public ProductService(MongoTemplate mongoTemplate) {
-    //     this.mongoTemplate = mongoTemplate;
-    // }
-
-
+ 
     public String saveProduct(Product product) throws IOException {
         productRepo.save(product);
         return "Success";
@@ -59,6 +52,12 @@ public class ProductService {
 
     public List<Product> showAllProduct(){
         return productRepo.findAll();
+    }
+
+
+    public Product getProductInfo(int id ){
+        Optional<Product> getProduct = productRepo.findById(id);
+        return getProduct.orElse(null);
     }
 
 
