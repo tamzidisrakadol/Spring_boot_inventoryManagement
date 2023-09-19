@@ -170,29 +170,29 @@ public class AdminController {
         return "admin/updateProductByCategory";
     }
 
-    // @PostMapping("admin/updateProduct/{categoryID}")
-    // public String updateProductinfoByCategoryid(@PathVariable("categoryID") int categoryID, Model model,
-    //         @RequestParam("name") String productName,
-    //         @RequestParam("id") int productId,
-    //         @RequestParam("price") int price) throws  IOException{
+    @PostMapping("admin/updateProduct/{categoryID}")
+    public String updateProductinfoByCategoryid(@PathVariable("categoryID") int categoryID, Model model,
+            @RequestParam("name") String productName,
+            @RequestParam("id") int productId,
+            @RequestParam("price") int price) throws  IOException{
 
-    //     Category category = productService.findByCategory(categoryID);
-    //     if(category != null){
-    //          Product product = new Product();
-    //          product.setId(productId);
-    //          product.setName(productName);
-    //          product.setPrice(price);
-    //          category.getProductList().add(product);
-    //         productService.saveProduct(product);
-    //         productService.saveCategory(category);
+        Category category = productService.findByCategory(categoryID);
+        if(category != null){
+             Product product = new Product();
+             product.setId(productId);
+             product.setName(productName);
+             product.setPrice(price);
+             category.getProductList().add(product);
+            productService.saveProduct(product);
+            productService.saveCategory(category);
 
-    //        return  "redirect:/admin/getCategorylist";
-    //     }else{
-    //         return "/admin/updateProductByCategory";
-    //     }
+           return  "redirect:/admin/getCategorylist";
+        }else{
+            return "/admin/updateProductByCategory";
+        }
 
         
-    // }
+    }
 
 }
 
