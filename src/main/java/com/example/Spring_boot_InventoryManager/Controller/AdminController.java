@@ -167,6 +167,7 @@ public class AdminController {
         model.addAttribute("categoryID", categoryID);
         Product productInfoFromDB = productService.getProductInfo(productID);
         model.addAttribute("productInfoFromDB", productInfoFromDB);
+        model.addAttribute("productImage", Base64.getEncoder().encodeToString(productInfoFromDB.getImages().getData()));
         return "admin/updateProductByCategory";
     }
 
