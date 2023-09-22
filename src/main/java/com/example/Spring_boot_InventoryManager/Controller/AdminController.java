@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -174,19 +175,33 @@ public class AdminController {
     // update product info
     @PostMapping("admin/updateProduct/{categoryID}")
     public String updateProductinfoByCategoryid(@PathVariable("categoryID") int categoryID, Model model,
-            @RequestParam("id") int productId) {
-
-        List<Product> testProduct = new ArrayList<>();
+            @RequestParam("id") int productId,
+            @RequestParam("images") MultipartFile imageFile,
+            @RequestParam("name") String name,
+            @RequestParam("batchnumber") String batchNumber,
+            @RequestParam("description") String description,
+            @RequestParam("expireDate") String expireDate,
+            @RequestParam("quantity") int quantity,
+            @RequestParam("price") int price) throws IOException {
         Category category = productService.findByCategory(categoryID);
         if (category != null) {
             for (Product product : category.getProductList()) {
                 if (product.getId() == productId) {
-                    testProduct.add(product);
+                    product.setId(productId);
+                    product.setName(name);
+                    product.setBatchNumber(batchNumber);
+                    product.setDescription(description);
+                    product.setExpireDate(expireDate);
+                    product.setPrice(price);
+                    product.setQuantity(quantity);
+                    product.setImageName(imageFile.getOriginalFilename());
+                    product.setImages(new Binary(BsonBinarySubType.BINARY, imageFile.getBytes()));
+                    productService.saveProduct(product);
+                    productService.saveCategory(category);
                 }
             }
-            System.out.println(testProduct.get(0).getName());
 
-            return "redirect:/admin/"+category.getCategoryName();
+            return "redirect:/admin/" + category.getCategoryName();
         } else {
             return "admin/updateProductByCategory";
         }

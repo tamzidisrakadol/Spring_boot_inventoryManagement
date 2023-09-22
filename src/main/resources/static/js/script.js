@@ -20,8 +20,6 @@ inputFile.addEventListener('change', function(){
         img.src=imgUrl
         imageArea.appendChild(img)
         imageArea.classList.add('active');
-
-
     }
     reader.readAsDataURL(image);
 })
