@@ -194,8 +194,16 @@ public class AdminController {
                     product.setExpireDate(expireDate);
                     product.setPrice(price);
                     product.setQuantity(quantity);
-                    product.setImageName(imageFile.getOriginalFilename());
-                    product.setImages(new Binary(BsonBinarySubType.BINARY, imageFile.getBytes()));
+                    
+
+                    if (imageFile.isEmpty()) {
+                        product.setImages(new Binary(BsonBinarySubType.BINARY, product.getImages().getData()));
+                        product.setImageName(product.getImageName());
+                    } else {
+                        product.setImages(new Binary(BsonBinarySubType.BINARY, imageFile.getBytes()));
+                        product.setImageName(imageFile.getOriginalFilename());
+                    }
+
                     productService.saveProduct(product);
                     productService.saveCategory(category);
                 }
