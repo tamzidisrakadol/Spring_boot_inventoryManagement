@@ -216,6 +216,11 @@ public class AdminController {
 
     }
 
+
+    public String deleteProduct(){
+        return "";
+    }
+
 }
 
 // List<Product> matchingProducts = new ArrayList<>();
