@@ -60,6 +60,10 @@ public class ProductService {
         return getProduct.orElse(null);
     }
 
+    public void deleteProduct(int id){
+        productRepo.deleteById(id);
+    }
+
 
     // public Category findCategoryByProductName(String productName) {
     //     // Create an aggregation query to join 'Category' and 'Product' collections

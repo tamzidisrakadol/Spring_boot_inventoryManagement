@@ -194,7 +194,6 @@ public class AdminController {
                     product.setExpireDate(expireDate);
                     product.setPrice(price);
                     product.setQuantity(quantity);
-                    
 
                     if (imageFile.isEmpty()) {
                         product.setImages(new Binary(BsonBinarySubType.BINARY, product.getImages().getData()));
@@ -208,7 +207,6 @@ public class AdminController {
                     productService.saveCategory(category);
                 }
             }
-
             return "redirect:/admin/" + category.getCategoryName();
         } else {
             return "admin/updateProductByCategory";
@@ -216,9 +214,23 @@ public class AdminController {
 
     }
 
+    @GetMapping("/admin/{categoryID}/{id}/delete")
+    public String deleteProduct(@PathVariable("categoryID") int categoryID, @PathVariable("id") int productID,
+            Model model) {
+        List<Product> newProductList = new ArrayList<>();
+        Category category = productService.findByCategory(categoryID);
+        if (category != null) {
+            for (Product product : category.getProductList()) {
+                if (product.getId() == productID) {
+                      System.out.println(product.getName());
+                } else {
+                    newProductList.add(product);
 
-    public String deleteProduct(){
-        return "";
+                }
+            }
+            System.out.println(productID);
+        }
+        return "admin/updateProductByCategory";
     }
 
 }

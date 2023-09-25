@@ -62,7 +62,7 @@
                   <button type="submit" class="btn bg-primary text-white">
                     Submit
                   </button>
-                  <a href="#" 
+                  <a href="#" th:href="@{'/admin/'+${categoryID}+'/'+${productInfoFromDB.id}+'/delete'}"
                     class="btn btn-danger btn-sm">Delete Product</a>
                 </div>
 
