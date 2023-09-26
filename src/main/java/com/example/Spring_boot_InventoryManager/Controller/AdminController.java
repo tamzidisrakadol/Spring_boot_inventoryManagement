@@ -214,6 +214,7 @@ public class AdminController {
 
     }
 
+    // delete product
     @GetMapping("/admin/{categoryID}/{id}/delete")
     public String deleteProduct(@PathVariable("categoryID") int categoryID, @PathVariable("id") int productID,
             Model model) {
@@ -222,15 +223,16 @@ public class AdminController {
         if (category != null) {
             for (Product product : category.getProductList()) {
                 if (product.getId() == productID) {
-                      System.out.println(product.getName());
+                    productService.deleteProduct(productID);
                 } else {
                     newProductList.add(product);
+                    category.setProductList(newProductList);
 
                 }
             }
-            System.out.println(productID);
+            System.out.println(newProductList.size());
         }
-        return "admin/updateProductByCategory";
+        return "redirect:/admin/" + category.getCategoryName();
     }
 
 }
