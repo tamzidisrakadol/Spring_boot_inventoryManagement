@@ -2,10 +2,15 @@ package com.example.Spring_boot_InventoryManager.Modal;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.persistence.Id;
+
 @Document(collection = "employee")
 public class Employee {
 
-    String id,name,imgurl,nid,address,position;
+    @Id
+    String id;
+
+    String name,imgurl,nid,address,position;
     Long mobileNumber;
 
     

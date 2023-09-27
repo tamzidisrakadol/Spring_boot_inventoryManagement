@@ -3,13 +3,18 @@ package com.example.Spring_boot_InventoryManager.Modal;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+
 
 @Document(collection = "employeeCategory")
 public class EmployeeCategory {
     
-    String categoryId, categoryName;
+    @Id
+    String categoryId;
+    String categoryName;
 
     @DBRef
     List<Employee> employeeList = new ArrayList<>();

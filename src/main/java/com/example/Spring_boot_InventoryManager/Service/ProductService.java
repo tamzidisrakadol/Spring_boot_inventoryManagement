@@ -1,15 +1,10 @@
 package com.example.Spring_boot_InventoryManager.Service;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import com.example.Spring_boot_InventoryManager.Modal.Category;
 import com.example.Spring_boot_InventoryManager.Modal.Product;
 import com.example.Spring_boot_InventoryManager.Repository.CategoryRepo;
 import com.example.Spring_boot_InventoryManager.Repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.LookupOperation;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
