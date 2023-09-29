@@ -48,7 +48,7 @@ body {
 
 .main {
     margin-left: 200px;
-    background: #E5E4E2;
+    background: #e1e0e0;
 }
 
 .addProductContainer {
@@ -203,3 +203,27 @@ hr.solid {
 }
 
 
+.addEmployeeContainer{
+
+    padding: 20px;
+    background: #e1e0e0;
+}
+
+.addEmployeeContainer .employeeCardContainer{
+    padding: 20px;
+    width: 100%;
+    height: 550px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: #202020;
+    
+}
+
+
+.rectangle-employeecontainer {
+    padding: 20px;
+    margin: 10px;
+    min-height: 710px;
+    border-radius: 10px;
+  
+}

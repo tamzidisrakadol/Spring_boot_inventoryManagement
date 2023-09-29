@@ -1,13 +1,111 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Document</title>
 </head>
+
 <body>
     <section>
-        <h1>Add Employee</h1>
+      <div class="addEmployeeContainer">
+
+        <div class="card w-75 mx-auto shadow">
+            <div class="card-body">
+                <form id="updateProductForm" >
+        
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="rectangle-employeecontainer">
+                        <h2>Update Product Info</h2>
+                        <hr class="solid">
+                        <div class="form-group">
+                          <label for="productName">Product Name</label>
+                          <input hidden name="id" >
+                          <input type="text" name="name" class="form-control" id="productName"
+                             placeholder="Ex: Tomato,Bringal">
+                        </div>
+                        <div class="form-group">
+                          <label for="Quantity">Quantity</label>
+                          <input type="number" name="quantity" class="form-control" id="Quantity"
+                             placeholder="Ex: 45">
+                        </div>
+                        <div class="form-group">
+                          <label for="BatchNumber">Batch Number</label>
+                          <input type="text" name="batchnumber" class="form-control" 
+                            id="BatchNumber" placeholder="Ex: YUNN782JH">
+                        </div>
+        
+                        <div class="form-group">
+                          <label for="ExpireDate">Expire Date</label>
+                          <input type="date" name="expireDate" class="form-control" id="ExpireDate"
+                          placeholder="Ex: DD/MM/YYYY">
+                        </div>
+        
+                        <div class="form-group">
+                          <label for="Price">Price</label>
+                          <input type="number" name="price" class="form-control" id="Price"
+                           placeholder="250 $">
+                        </div>
+        
+                        <div class="form-group mt-3">
+                          <textarea placeholder="Enter description" name="description"
+                            id="description" class="form-control"
+                            rows="3"></textarea>
+                        </div>
+        
+        
+                        <div class="container text-center">
+                          <button type="submit" class="btn bg-primary text-white">
+                            Submit
+                          </button>
+                          <a href="#"
+                            class="btn btn-danger btn-sm">Delete Product</a>
+                        </div>
+        
+                      </div>
+                    </div>
+        
+                    <!--add product to desire Category-->
+                    <div class="col-md-6">
+                      <div class="rectangle-employeecontainer">
+                        <h2>Update Image</h2>
+                        <hr class="solid">
+                        <!--upload Image-->
+                        <div class="imageContainer">
+                          <input type="file" name="images" id="file" accept="image/*" hidden>
+                          <div class="image-area">
+                            <img name="images"  alt="Product Img" />
+                          </div>
+                          <div class="container text-center">
+                            <button type="button" class="select-image btn btn-secondary">Select
+                              Image</button>
+                          </div>
+                        </div>
+        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+      </div>
     </section>
+
+
+
+    <script th:src="@{/js/script.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>
