@@ -6,6 +6,7 @@
 
 body {
     box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
 
 }
 
@@ -53,6 +54,7 @@ body {
 
 .addProductContainer {
     padding: 20px;
+    
 
 }
 
@@ -72,13 +74,13 @@ body {
 }
 
 hr.solid {
-    border-top: 3px solid #bbb;
+    border-top: 3px solid #000000;
 }
 
 .imageContainer {
     max-width: 350px;
     width: 100%;
-    background: blanchedalmond;
+    background: rgb(255, 255, 255);
     padding: 30px;
     border-radius: 15px;
 }

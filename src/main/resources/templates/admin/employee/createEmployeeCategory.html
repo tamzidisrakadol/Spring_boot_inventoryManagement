@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+        <div class="bodyContainer">
+            <div class="categoryContainer">
+                <div class="category-area">
+                    <form>
+
+                        <div class="form-group">
+                            <label for="employeeCategory">Create Category for Employee</label>
+
+                            <input type="text" class="form-control" name="categoryName" id="employeeCategory"
+                                placeholder="Ex: Security">
+                        </div>
+
+                        <div class="container text-center mt-3">
+                            <button class="btn btn-outline-primary">Create Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
