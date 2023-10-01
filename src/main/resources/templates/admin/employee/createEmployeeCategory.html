@@ -12,13 +12,13 @@
         <div class="bodyContainer">
             <div class="categoryContainer">
                 <div class="category-area">
-                    <form>
+                    <form th:action="@{/admin/createEmployeeCategory}" method="POST" th:object="${employeeCategory}">
 
                         <div class="form-group">
                             <label for="employeeCategory">Create Category for Employee</label>
 
                             <input type="text" class="form-control" name="categoryName" id="employeeCategory"
-                                placeholder="Ex: Security">
+                                th:value="${employeeCategory.categoryName}" placeholder="Ex: Day Shift">
                         </div>
 
                         <div class="container text-center mt-3">

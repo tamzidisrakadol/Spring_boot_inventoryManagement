@@ -2,125 +2,128 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/base::layout(~{::section})">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Document</title>
 </head>
 
 <!--name nid address position mobilenumber categoryName-->
 
 <body>
-    <section>
-      <div class="addEmployeeContainer">
+  <section>
+    <div class="addEmployeeContainer">
 
-        <div class="card w-75 mx-auto shadow">
-            <div class="card-body">
+      <div class="card w-75 mx-auto shadow">
+        <div class="card-body">
 
-                <form id="updateProductForm" >
-        
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="rectangle-employeecontainer">
-                        <h2>Add Employee Info</h2>
-                        <hr class="solid">
+          <form id="updateProductForm">
 
-                        <div class="form-group">
-                          <label for="EmployeeName">Employee Full Name</label>
-                          <input hidden name="id" >
-                          <input type="text" name="name" class="form-control" id="EmployeeName"
-                             placeholder="Ex: John Abraham">
-                        </div>
-                        <div class="form-group">
-                          <label for="nidcard">NID</label>
-                          <input type="number" name="quantity" class="form-control" id="nidcard"
-                             placeholder="Ex: 785412366">
-                        </div>
-                        <div class="form-group">
-                          <label for="address">Address</label>
-                          <input type="text" name="batchnumber" class="form-control" 
-                            id="address" placeholder="Ex: Road no 21, Marcus Street, House#22">
-                        </div>
-        
-                        <div class="form-group">
-                          <label for="position">Position</label>
-                          <input type="text" name="expireDate" class="form-control" id="position"
-                          placeholder="Ex: Sales Excustive">
-                        </div>
-        
-                        <div class="form-group">
-                          <label for="mobilenumber">Mobile-number</label>
-                          <input type="number" name="price" class="form-control" id="mobilenumber"
-                           placeholder="Ex: 917458214445">
-                        </div>
-        
-                        <div class="form-group">
-                          <label for="categoryList">Employee Category</label>
-                          <select id="categoryList" name="categoryId" class="form-control" onchange="updateFormAction()">
-                            <option selected>Choose Category</option>
-                            
-                          </select>
-                        </div>
-        
-        
-                        <div class="container text-center">
-                          <button type="submit" class="btn bg-primary text-white">
-                            Submit
-                          </button>
-                        </div>
-        
-                      </div>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="rectangle-employeecontainer">
+                    <h2>Add Employee Info</h2>
+                    <hr class="solid">
+
+                    <div class="form-group">
+                      <label for="EmployeeName">Employee Full Name</label>
+                      <input hidden name="id">
+                      <input type="text" name="name" class="form-control" id="EmployeeName"
+                        placeholder="Ex: John Abraham">
                     </div>
-        
-                    <!--add product to desire Category-->
-                    <div class="col-md-6">
-                      <div class="rectangle-employeecontainer">
-                        <h2>Add Image</h2>
-                        <hr class="solid">
-                        <!--upload Image-->
-                        <div class="imageContainer">
-                          <input type="file" name="images" id="file" accept="image/*" hidden>
-                          <div class="image-area">
-                            <i class="fa-solid fa-upload icon"></i>
-                            <h3>Upload Employee Image</h3>
-                            <p>Image size must be less than 5MB</p>
-          
-                          </div>
-                          <div class="container text-center">
-                            <button type="button" class="select-image btn btn-secondary">Select Image</button>
-                          </div>
-                        </div>
-
-                        <div class="space-between-divs"></div>
-
-                        <div class="container text-center mt-3">
-                          <h5>Add Category for Employee</h5>
-                          <button type="button" class="btn btn-outline-primary btn-block" onclick="redirectToEmployeeCategoryPage()">
-                            Create Category
-                          </button>
-                        </div>
-
-        
-                      </div>
+                    <div class="form-group">
+                      <label for="nidcard">Nid</label>
+                      <input type="number" name="quantity" class="form-control" id="nidcard"
+                        placeholder="Ex: 785412366">
                     </div>
+                    <div class="form-group">
+                      <label for="address">Address</label>
+                      <input type="text" name="batchnumber" class="form-control" id="address"
+                        placeholder="Ex: Road no 21, Marcus Street, House#22">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="position">Position</label>
+                      <input type="text" name="expireDate" class="form-control" id="position"
+                        placeholder="Ex: Sales Excustive">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="mobilenumber">Mobile-number</label>
+                      <input type="number" name="price" class="form-control" id="mobilenumber"
+                        placeholder="Ex: 917458214445">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="categoryList">Employee Category</label>
+                      <select id="categoryList" name="categoryId" class="form-control" onchange="updateFormAction()">
+                        <option selected>Choose Category</option>
+                        <option th:each="categories : ${categoriyList}" th:value="${categories.categoryId}"
+                          th:text="${categories.categoryName}"></option>
+
+                      </select>
+                    </div>
+
+
+                    <div class="container text-center">
+                      <button type="submit" class="btn bg-primary text-white">
+                        Submit
+                      </button>
+                    </div>
+
                   </div>
                 </div>
-              </form>
+
+                <!--add product to desire Category-->
+                <div class="col-md-6">
+                  <div class="rectangle-employeecontainer">
+                    <h2>Add Image</h2>
+                    <hr class="solid">
+                    <!--upload Image-->
+                    <div class="imageContainer">
+                      <input type="file" name="images" id="file" accept="image/*" hidden>
+                      <div class="image-area">
+                        <i class="fa-solid fa-upload icon"></i>
+                        <h3>Upload Employee Image</h3>
+                        <p>Image size must be less than 5MB</p>
+
+                      </div>
+                      <div class="container text-center">
+                        <button type="button" class="select-image btn btn-secondary">Select Image</button>
+                      </div>
+                    </div>
+
+                    <div class="space-between-divs"></div>
+
+                    <div class="container text-center mt-3">
+                      <h5>Add Category for Employee</h5>
+                      <button type="button" class="btn btn-outline-primary btn-block"
+                        onclick="redirectToEmployeeCategoryPage()">
+                        Create Category
+                      </button>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-
+          </form>
+        </div>
       </div>
-    </section>
+
+    </div>
+  </section>
 
 
 
-    <script th:src="@{/js/script.js}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script th:src="@{/js/script.js}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
