@@ -39,3 +39,10 @@ function redirectToEmployeeCategoryPage() {
 
     window.location.href = "/admin/EmployeeCategory";
 }
+
+
+function updateEmpFormAction() {
+    var categoryId = document.getElementById("categoryList").value;
+    var form = document.getElementById("updateProductForm");
+    form.action = "/admin/addEmployee/" + categoryId;
+}
