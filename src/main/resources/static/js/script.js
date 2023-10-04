@@ -43,6 +43,6 @@ function redirectToEmployeeCategoryPage() {
 
 function updateEmpFormAction() {
     var categoryId = document.getElementById("categoryList").value;
-    var form = document.getElementById("updateProductForm");
+    var form = document.getElementById("updateEmpForm");
     form.action = "/admin/addEmployee/" + categoryId;
 }

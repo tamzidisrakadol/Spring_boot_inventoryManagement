@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.Spring_boot_InventoryManager.Modal.Employee;
 
 @Repository
-public interface EmployeeRepo extends MongoRepository<Employee,String>{
+public interface EmployeeRepo extends MongoRepository<Employee,Integer>{
     
     
 }

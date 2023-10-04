@@ -1,26 +1,26 @@
 package com.example.Spring_boot_InventoryManager.Modal;
 
 import org.bson.types.Binary;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Id;
 
 @Document(collection = "employee")
 public class Employee {
-
     @Id
-    String id;
+    int productId;
 
-    String name,nid,address,position;
+    String name, nid, address, position;
     Long mobileNumber;
     Binary immgurl;
-    
+
     public Employee() {
+
     }
 
-    public Employee(String id, String name, String nid, String address, String position, Long mobileNumber,
-            Binary immgurl) {
-        this.id = id;
+    public Employee(int productId, String name, String nid, String address, String position, Long mobileNumber, Binary immgurl) {
+        this.productId = productId;
         this.name = name;
         this.nid = nid;
         this.address = address;
@@ -29,12 +29,13 @@ public class Employee {
         this.immgurl = immgurl;
     }
 
-    public String getId() {
-        return id;
+
+    public int getProductId() {
+        return productId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -84,19 +85,4 @@ public class Employee {
     public void setImmgurl(Binary immgurl) {
         this.immgurl = immgurl;
     }
-
-    @Override
-    public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", nid=" + nid + ", address=" + address + ", position="
-                + position + ", mobileNumber=" + mobileNumber + ", immgurl=" + immgurl + "]";
-    }
-
-    
-
-    
-
-
-    
-    
-    
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Id;
+
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,61 +15,42 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class EmployeeCategory {
     
     @Id
-    String categoryId;
+    int   categoryId;
     String categoryName;
 
     @DBRef
     List<Employee> employeeList = new ArrayList<>();
 
-    
-
     public EmployeeCategory() {
     }
 
-
-
-    public EmployeeCategory(String categoryId, String categoryName, List<Employee> employeeList) {
+    public EmployeeCategory(int categoryId, String categoryName, List<Employee> employeeList) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.employeeList = employeeList;
     }
 
-
-
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-
-
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
-
-
 
     public String getCategoryName() {
         return categoryName;
     }
 
-
-
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
-
 
     public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
-
-
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
-
-    
-    
 }

@@ -2,6 +2,7 @@ package com.example.Spring_boot_InventoryManager.Controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
@@ -53,7 +54,7 @@ public class AdminEmployeeController {
 
     //add Employee to desire category
     @PostMapping("/admin/addEmployee/{categoryId}")
-    public String addEmployeeToCategoryList(@PathVariable("categoryId")String categroyId,
+    public String addEmployeeToCategoryList(@PathVariable("categoryId")int  categroyId,
     @RequestParam("name") String name,
     @RequestParam("address")String address,
     @RequestParam("nid")String nid,
@@ -65,6 +66,9 @@ public class AdminEmployeeController {
         EmployeeCategory employeeCategory = employeeService.findEmpCategory(categroyId);
         if(employeeCategory!=null){
             Employee employee = new Employee();
+            Random radom  = new Random();
+            int procductID =radom.nextInt((20000-1000)+1)+1000;
+            employee.setProductId(procductID);
             employee.setName(name);
             employee.setAddress(address);
             employee.setImmgurl(new Binary(BsonBinarySubType.BINARY, imgFile.getBytes()));
@@ -74,7 +78,7 @@ public class AdminEmployeeController {
             employeeCategory.getEmployeeList().add(employee);
             employeeService.saveEmployee(employee);
             employeeService.saveEmployeeCategory(employeeCategory); 
-            return "redirect:/admin/employee/addEmployee";
+            return "redirect:/admin/addEmployee";
         }else{
             return "admin/employee/addEmployee";
         }
