@@ -1,17 +1,20 @@
 package com.example.Spring_boot_InventoryManager.Modal;
 
 import org.bson.types.Binary;
-import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.Id;
+
 
 @Document(collection = "employee")
 public class Employee {
-    @Id
-    int productId;
 
-    String name, nid, address, position;
+    @Id
+    int employeeId;
+    String name;
+    String nid;
+    String address;
+    String position;
     Long mobileNumber;
     Binary immgurl;
 
@@ -19,8 +22,8 @@ public class Employee {
 
     }
 
-    public Employee(int productId, String name, String nid, String address, String position, Long mobileNumber, Binary immgurl) {
-        this.productId = productId;
+    public Employee(int employeeId, String name, String nid, String address, String position, Long mobileNumber, Binary immgurl) {
+        this.employeeId = employeeId;
         this.name = name;
         this.nid = nid;
         this.address = address;
@@ -29,14 +32,9 @@ public class Employee {
         this.immgurl = immgurl;
     }
 
+    
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+  
 
     public String getName() {
         return name;
@@ -84,5 +82,13 @@ public class Employee {
 
     public void setImmgurl(Binary immgurl) {
         this.immgurl = immgurl;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 }

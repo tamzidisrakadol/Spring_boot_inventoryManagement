@@ -54,7 +54,7 @@ public class AdminEmployeeController {
 
     //add Employee to desire category
     @PostMapping("/admin/addEmployee/{categoryId}")
-    public String addEmployeeToCategoryList(@PathVariable("categoryId")int  categroyId,
+    public String addEmployeeToCategoryList(@PathVariable("categoryId")int categroyId,
     @RequestParam("name") String name,
     @RequestParam("address")String address,
     @RequestParam("nid")String nid,
@@ -68,7 +68,7 @@ public class AdminEmployeeController {
             Employee employee = new Employee();
             Random radom  = new Random();
             int procductID =radom.nextInt((20000-1000)+1)+1000;
-            employee.setProductId(procductID);
+            employee.setEmployeeId(procductID);
             employee.setName(name);
             employee.setAddress(address);
             employee.setImmgurl(new Binary(BsonBinarySubType.BINARY, imgFile.getBytes()));

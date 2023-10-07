@@ -3,9 +3,7 @@ package com.example.Spring_boot_InventoryManager.Modal;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Id;
-
-import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class EmployeeCategory {
     
     @Id
-    int   categoryId;
+    int categoryId;
     String categoryName;
 
     @DBRef
