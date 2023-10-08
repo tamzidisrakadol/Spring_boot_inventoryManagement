@@ -93,4 +93,17 @@ public class AdminEmployeeController {
         model.addAttribute("employeeCategories", employeeCategories);
         return "admin/employee/showemployee";
     }
+
+    //showing Employee by category
+    @GetMapping("/admin/employee/{categoryId}")
+    public String showEmployeeByCategory(Model model, @PathVariable("categoryId") int categoryId){
+        model.addAttribute("title", "Employee List");
+        EmployeeCategory employeeCategory = employeeService.findEmpCategory(categoryId);
+        if(employeeCategory != null){
+            List<Employee> employees = employeeCategory.getEmployeeList();
+            model.addAttribute("employees", employees);
+        }
+        model.addAttribute("empCatID", employeeCategory.getCategoryId());
+        return "admin/employee/showEmployeeList";
+    }
 }
