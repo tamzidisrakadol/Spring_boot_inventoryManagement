@@ -10,8 +10,6 @@ public class SpringBootInventoryManagerApplication {
 	SpringApplication.run(SpringBootInventoryManagerApplication.class, args);
 
 	
-
-
 	}
 
 }

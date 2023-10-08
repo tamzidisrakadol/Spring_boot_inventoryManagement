@@ -83,4 +83,14 @@ public class AdminEmployeeController {
             return "admin/employee/addEmployee";
         }
     }
+
+
+    //showemployeeCategory
+    @GetMapping("/admin/showEmployeeCategory")
+    public String showCategoryList(Model model){
+        model.addAttribute("title", "Employee Category");
+        List<EmployeeCategory> employeeCategories = employeeService.showEmployeeCategory();
+        model.addAttribute("employeeCategories", employeeCategories);
+        return "admin/employee/showemployee";
+    }
 }
